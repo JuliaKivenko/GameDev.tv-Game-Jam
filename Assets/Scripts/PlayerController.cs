@@ -10,6 +10,7 @@ public class PlayerController : MonoBehaviour, IReceiveDamage
     [SerializeField] Transform fireballSocket;
     [SerializeField] GameObject fireball;
     [SerializeField] float rechargeTime;
+    [SerializeField] float rechargeSpeed;
 
     Rigidbody playerRigidbody;
     float currentRechargeTime;
@@ -62,9 +63,11 @@ public class PlayerController : MonoBehaviour, IReceiveDamage
         if (fireballProjectile != null)
         {
             fireballProjectile.transform.position = fireballSocket.position;
-            fireballProjectile.transform.rotation = fireballSocket.rotation;
+            fireballProjectile.transform.rotation = Quaternion.identity;
             fireballProjectile.SetActive(true);
         }
+
+        StartCoroutine(IRechargeFireball());
     }
 
     public void ReceiveDamage(float damage)
@@ -83,6 +86,16 @@ public class PlayerController : MonoBehaviour, IReceiveDamage
     void Die()
     {
         //GameOver
+    }
 
+    //Recharge Fireball
+    IEnumerator IRechargeFireball()
+    {
+        while (currentRechargeTime < rechargeTime)
+        {
+            currentRechargeTime += rechargeSpeed * Time.deltaTime;
+            yield return new WaitForEndOfFrame();
+        }
+        currentRechargeTime = rechargeTime;
     }
 }

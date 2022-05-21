@@ -4,7 +4,13 @@ using UnityEngine;
 
 public class Projectile : Damager
 {
-    float speed;
-    Vector3 direction;
+    [SerializeField] protected float speed;
+    [SerializeField] protected Vector3 direction;
+    [SerializeField] protected Rigidbody rb;
+
+    private void Update()
+    {
+        gameObject.transform.Translate(direction * speed * Time.deltaTime);
+    }
 
 }

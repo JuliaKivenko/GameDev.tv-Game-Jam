@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class Damager : MonoBehaviour
 {
-    float damage;
-    LayerMask whatToDamage;
+    [SerializeField] protected float damage;
 
 }
