@@ -10,7 +10,16 @@ public class Projectile : Damager
 
     private void Update()
     {
-        gameObject.transform.Translate(direction * speed * Time.deltaTime);
+        if (gameObject.activeInHierarchy)
+        {
+            gameObject.transform.Translate(direction * speed * Time.deltaTime);
+        }
+
+    }
+
+    private void OnBecameInvisible()
+    {
+        gameObject.SetActive(false);
     }
 
 }
