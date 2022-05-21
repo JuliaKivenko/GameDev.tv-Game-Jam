@@ -2,9 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Projectile : Damager
+public interface IReceiveDamage
 {
-    float speed;
-    Vector3 direction;
-
+    void ReceiveDamage(float damage);
 }

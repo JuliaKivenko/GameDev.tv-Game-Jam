@@ -2,10 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerController : MonoBehaviour
+public class PlayerController : MonoBehaviour, IReceiveDamage
 {
-
-
+    [SerializeField] float baseHealth;
     [SerializeField] float flyForceMultiplier;
     [SerializeField] Vector3 flyDirection;
     [SerializeField] Transform fireballSocket;
@@ -14,6 +13,7 @@ public class PlayerController : MonoBehaviour
 
     Rigidbody playerRigidbody;
     float currentRechargeTime;
+    float currentHealth;
 
     void Start()
     {
@@ -65,5 +65,24 @@ public class PlayerController : MonoBehaviour
             fireballProjectile.transform.rotation = fireballSocket.rotation;
             fireballProjectile.SetActive(true);
         }
+    }
+
+    public void ReceiveDamage(float damage)
+    {
+        //take damage
+        currentHealth -= damage;
+
+        //If no health left - game over
+        if (currentHealth <= 0)
+        {
+            Die();
+        }
+
+    }
+
+    void Die()
+    {
+        //GameOver
+
     }
 }
