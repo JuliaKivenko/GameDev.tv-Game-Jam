@@ -4,15 +4,16 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    public static GameManager sharedInstance;
+    int points = 0;
 
-    // Update is called once per frame
-    void Update()
+    private void Awake()
     {
-        
+        sharedInstance = this;
+    }
+    public void AddPoints(int pointsToAdd)
+    {
+        points += pointsToAdd;
+        Debug.Log("+" + pointsToAdd + "! You now have " + points + " points.");
     }
 }
