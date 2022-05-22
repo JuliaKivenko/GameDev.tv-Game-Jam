@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Enemy : Damager, IReceiveDamage
+public abstract class Enemy : Damager, IReceiveDamage
 {
     [SerializeField] float baseHealth;
     [SerializeField] int pointsToSpawn;

@@ -123,7 +123,7 @@ public class PlayerController : MonoBehaviour, IReceiveDamage
         return playerRigidbody.velocity;
     }
 
-    private void OnCollisionEnter(Collision other)
+    private void OnTriggerEnter(Collision other)
     {
         if (other.gameObject.GetComponent<Damager>())
         {

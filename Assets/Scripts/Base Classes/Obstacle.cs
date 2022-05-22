@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Obstacle : Damager
+public abstract class Obstacle : Damager
 {
 
 }
