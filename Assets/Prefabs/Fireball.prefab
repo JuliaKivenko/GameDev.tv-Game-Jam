@@ -50,6 +50,7 @@ MonoBehaviour:
   speed: 15
   direction: {x: 1, y: 0, z: 0}
   rb: {fileID: 3298537442876558180}
+  projectileCollider: {fileID: 1311046865075663255}
 --- !u!135 &1311046865075663255
 SphereCollider:
   m_ObjectHideFlags: 0

@@ -7,19 +7,26 @@ public class Projectile : Damager
     [SerializeField] protected float speed;
     [SerializeField] protected Vector3 direction;
     [SerializeField] protected Rigidbody rb;
+    [SerializeField] protected Collider projectileCollider;
 
     private void Update()
     {
-        if (gameObject.activeInHierarchy)
+        if (ICanSee())
         {
             gameObject.transform.Translate(direction * speed * Time.deltaTime);
+        }
+        else
+        {
+            gameObject.SetActive(false);
         }
 
     }
 
-    private void OnBecameInvisible()
+
+    private bool ICanSee()
     {
-        gameObject.SetActive(false);
+        Plane[] planes = GeometryUtility.CalculateFrustumPlanes(Camera.main);
+        return GeometryUtility.TestPlanesAABB(planes, projectileCollider.bounds);
     }
 
 }

@@ -23,12 +23,12 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1065992468683170900}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -1.192, z: 0}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: -1.1920005, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 7785142338467295331}
-  m_RootOrder: 1
+  m_Father: {fileID: 7785142338267163510}
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &7785142338267163509
 GameObject:
@@ -41,6 +41,7 @@ GameObject:
   - component: {fileID: 7785142338267163510}
   - component: {fileID: 7785142338267163512}
   - component: {fileID: 7785142338267163511}
+  - component: {fileID: 383265939325913478}
   m_Layer: 0
   m_Name: Visual
   m_TagString: Untagged
@@ -58,7 +59,8 @@ Transform:
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
+  m_Children:
+  - {fileID: 177911139499536042}
   m_Father: {fileID: 7785142338467295331}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: -90}
@@ -111,6 +113,18 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!114 &383265939325913478
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7785142338267163509}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 589dd3ec0a022d64cbef176c021b7e06, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &7785142338467295329
 GameObject:
   m_ObjectHideFlags: 0
@@ -123,7 +137,7 @@ GameObject:
   - component: {fileID: 7785142338467295330}
   - component: {fileID: 7446010088555999145}
   - component: {fileID: 3601986347668519959}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Player
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -142,7 +156,6 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 7785142338267163510}
-  - {fileID: 177911139499536042}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 90}
@@ -159,12 +172,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   baseHealth: 100
-  flyForceMultiplier: 40
-  flyDirection: {x: 0, y: 1, z: 0}
-  fireballSocket: {fileID: 177911139499536042}
-  fireball: {fileID: 4286920690739996324, guid: 5205a1b97a075ff4f843097cf4c7162a, type: 3}
   rechargeTime: 1
   rechargeSpeed: 4
+  flyForceMultiplier: 40
+  invulnerabilityLength: 1
+  fireballSocket: {fileID: 177911139499536042}
+  fireball: {fileID: 4286920690739996324, guid: 5205a1b97a075ff4f843097cf4c7162a, type: 3}
 --- !u!54 &7446010088555999145
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -179,7 +192,7 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 0
+  m_Constraints: 40
   m_CollisionDetection: 0
 --- !u!65 &3601986347668519959
 BoxCollider:

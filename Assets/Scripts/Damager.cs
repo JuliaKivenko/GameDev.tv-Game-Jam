@@ -6,4 +6,10 @@ public class Damager : MonoBehaviour
 {
     [SerializeField] protected float damage;
 
+    public float GetDamage()
+    {
+        float damageValue = damage;
+        return damageValue;
+    }
+
 }

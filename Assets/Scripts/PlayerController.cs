@@ -4,42 +4,64 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour, IReceiveDamage
 {
+    [Header("Base Stats")]
     [SerializeField] float baseHealth;
-    [SerializeField] float flyForceMultiplier;
-    [SerializeField] Vector3 flyDirection;
-    [SerializeField] Transform fireballSocket;
-    [SerializeField] GameObject fireball;
     [SerializeField] float rechargeTime;
     [SerializeField] float rechargeSpeed;
+    [SerializeField] float flyForceMultiplier;
+    [SerializeField] float invulnerabilityLength;
 
+    [Header("Projectile")]
+    [SerializeField] Transform fireballSocket;
+    [SerializeField] GameObject fireball;
+
+    Vector3 flyDirection = Vector3.up;
     Rigidbody playerRigidbody;
     float currentRechargeTime;
     float currentHealth;
+    float move = 0;
+    bool invulnerabilityActive = false;
+
+    public static PlayerController sharedInstance;
 
     void Start()
     {
         playerRigidbody = GetComponent<Rigidbody>();
         currentRechargeTime = rechargeTime;
+        currentHealth = baseHealth;
+
+        sharedInstance = this;
     }
 
 
     void Update()
     {
         ManageInput();
+
+        //Rotate visual up or down depending on whether the birb goes up or down. Rotate to normal if birb reach a boundary. 
+    }
+
+    private void FixedUpdate()
+    {
+        playerRigidbody.AddForce(flyDirection * flyForceMultiplier * move);
     }
 
     void ManageInput()
     {
+        if (Input.GetKeyDown(KeyCode.Mouse0))
+        {
+            playerRigidbody.velocity = Vector3.up;
+        }
         if (Input.GetKey(KeyCode.Mouse0))
         {
             //Smoothly fly up up to a certain limit
-            playerRigidbody.velocity = Vector3.zero;
-            playerRigidbody.AddForce(flyDirection * flyForceMultiplier);
+            move = 1;
         }
         if (Input.GetKeyUp(KeyCode.Mouse0))
         {
             //Player slowly falls to the bottom of the screen
-            playerRigidbody.velocity = Vector3.zero;
+            playerRigidbody.velocity = Vector3.down;
+            move = 0;
         }
         if (Input.GetKeyDown(KeyCode.Mouse1))
         {
@@ -72,8 +94,17 @@ public class PlayerController : MonoBehaviour, IReceiveDamage
 
     public void ReceiveDamage(float damage)
     {
+        if (invulnerabilityActive)
+        {
+            return;
+        }
+
         //take damage
         currentHealth -= damage;
+        Debug.Log("Current health is " + currentHealth);
+
+        //Small invulnerability window so that player does not get insta-killed
+        StartCoroutine(IInvulnerabilityFrames());
 
         //If no health left - game over
         if (currentHealth <= 0)
@@ -86,6 +117,20 @@ public class PlayerController : MonoBehaviour, IReceiveDamage
     void Die()
     {
         //GameOver
+        Debug.Log("Game Over!");
+    }
+
+    public Vector3 GetNormalizedVelocity()
+    {
+        return Vector3.Normalize(playerRigidbody.velocity);
+    }
+
+    private void OnCollisionEnter(Collision other)
+    {
+        if (other.gameObject.GetComponent<Damager>())
+        {
+            ReceiveDamage(other.gameObject.GetComponent<Damager>().GetDamage());
+        }
     }
 
     //Recharge Fireball
@@ -98,4 +143,13 @@ public class PlayerController : MonoBehaviour, IReceiveDamage
         }
         currentRechargeTime = rechargeTime;
     }
+
+    IEnumerator IInvulnerabilityFrames()
+    {
+        invulnerabilityActive = true;
+        yield return new WaitForSeconds(invulnerabilityLength);
+        invulnerabilityActive = false;
+    }
+
+
 }
