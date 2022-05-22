@@ -12,7 +12,7 @@ public class Enemy : Damager, IReceiveDamage
 
 
 
-    void InitializeEnemy()
+    public void InitializeEnemy()
     {
         currentHealth = baseHealth;
         //set spawn position

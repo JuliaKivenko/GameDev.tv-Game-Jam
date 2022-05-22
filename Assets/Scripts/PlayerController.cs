@@ -37,8 +37,6 @@ public class PlayerController : MonoBehaviour, IReceiveDamage
     void Update()
     {
         ManageInput();
-
-        //Rotate visual up or down depending on whether the birb goes up or down. Rotate to normal if birb reach a boundary. 
     }
 
     private void FixedUpdate()
