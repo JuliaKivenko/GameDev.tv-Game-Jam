@@ -10,6 +10,11 @@ public class ScrollingObject : MonoBehaviour
         scrollCoroutine = StartCoroutine(ScrollObject());
     }
 
+    private void OnDisable()
+    {
+        StopScrolling();
+    }
+
     public void StopScrolling()
     {
         StopCoroutine(scrollCoroutine);

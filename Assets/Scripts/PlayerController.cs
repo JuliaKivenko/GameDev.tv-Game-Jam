@@ -123,9 +123,9 @@ public class PlayerController : MonoBehaviour, IReceiveDamage
         return playerRigidbody.velocity;
     }
 
-    private void OnTriggerEnter(Collision other)
+    private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.GetComponent<Damager>())
+        if (other.gameObject.GetComponent<Enemy>())
         {
             ReceiveDamage(other.gameObject.GetComponent<Damager>().GetDamage());
         }

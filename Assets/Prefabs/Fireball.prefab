@@ -12,8 +12,8 @@ GameObject:
   - component: {fileID: 7278452940446313406}
   - component: {fileID: 1311046865075663255}
   - component: {fileID: 3298537442876558180}
-  - component: {fileID: 5224682239323199470}
-  m_Layer: 0
+  - component: {fileID: 2476320850005664975}
+  m_Layer: 7
   m_Name: Fireball
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -81,7 +81,7 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 112
   m_CollisionDetection: 0
---- !u!114 &5224682239323199470
+--- !u!114 &2476320850005664975
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -104,7 +104,7 @@ GameObject:
   - component: {fileID: 2522567905165501427}
   - component: {fileID: 2799553029223441869}
   - component: {fileID: 1163930506824931885}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Sphere
   m_TagString: Untagged
   m_Icon: {fileID: 0}

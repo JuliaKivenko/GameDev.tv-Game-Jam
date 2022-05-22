@@ -1167,17 +1167,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   despawnTransform: {fileID: 622445629}
-  levelSpeed: 0.05
+  levelSpeed: 0.035
   levelSegments:
   - {fileID: 386381920728681332, guid: 20231433b9feec644b2b8495272c159e, type: 3}
   - {fileID: 5669792981970394437, guid: 6cfbb231a5f00c54a87e66b76abab1e0, type: 3}
   - {fileID: 5669792981970394437, guid: 6cfbb231a5f00c54a87e66b76abab1e0, type: 3}
   - {fileID: 5669792981970394437, guid: 6cfbb231a5f00c54a87e66b76abab1e0, type: 3}
   - {fileID: 5669792981970394437, guid: 6cfbb231a5f00c54a87e66b76abab1e0, type: 3}
-  - {fileID: 5669792981970394437, guid: 6cfbb231a5f00c54a87e66b76abab1e0, type: 3}
-  - {fileID: 5669792981970394437, guid: 6cfbb231a5f00c54a87e66b76abab1e0, type: 3}
-  - {fileID: 5669792981970394437, guid: 6cfbb231a5f00c54a87e66b76abab1e0, type: 3}
-  - {fileID: 5669792981970394437, guid: 6cfbb231a5f00c54a87e66b76abab1e0, type: 3}
+  - {fileID: 5669792981970394437, guid: ad62e2a2752ff664cbc50e6ac5a77fc9, type: 3}
+  - {fileID: 5669792981970394437, guid: ad62e2a2752ff664cbc50e6ac5a77fc9, type: 3}
+  - {fileID: 5669792981970394437, guid: ad62e2a2752ff664cbc50e6ac5a77fc9, type: 3}
+  - {fileID: 5669792981970394437, guid: ad62e2a2752ff664cbc50e6ac5a77fc9, type: 3}
   spawnTransform: {fileID: 1609007163}
 --- !u!4 &880190733
 Transform:
