@@ -50,7 +50,7 @@ public class PlayerController : MonoBehaviour, IReceiveDamage
     {
         if (Input.GetKeyDown(KeyCode.Mouse0))
         {
-            playerRigidbody.velocity = Vector3.up;
+            playerRigidbody.velocity = Vector3.zero;
         }
         if (Input.GetKey(KeyCode.Mouse0))
         {
@@ -60,7 +60,7 @@ public class PlayerController : MonoBehaviour, IReceiveDamage
         if (Input.GetKeyUp(KeyCode.Mouse0))
         {
             //Player slowly falls to the bottom of the screen
-            playerRigidbody.velocity = Vector3.down;
+            playerRigidbody.velocity = Vector3.zero;
             move = 0;
         }
         if (Input.GetKeyDown(KeyCode.Mouse1))
@@ -120,9 +120,9 @@ public class PlayerController : MonoBehaviour, IReceiveDamage
         Debug.Log("Game Over!");
     }
 
-    public Vector3 GetNormalizedVelocity()
+    public Vector3 GetVelocity()
     {
-        return Vector3.Normalize(playerRigidbody.velocity);
+        return playerRigidbody.velocity;
     }
 
     private void OnCollisionEnter(Collision other)
