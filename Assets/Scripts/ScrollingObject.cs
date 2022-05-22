@@ -4,12 +4,18 @@ using UnityEngine;
 
 public class ScrollingObject : MonoBehaviour
 {
+    Coroutine scrollCoroutine;
     private void OnEnable()
     {
-        StartCoroutine(MoveLevelSegment());
+        scrollCoroutine = StartCoroutine(ScrollObject());
     }
 
-    IEnumerator MoveLevelSegment()
+    public void StopScrolling()
+    {
+        StopCoroutine(scrollCoroutine);
+    }
+
+    IEnumerator ScrollObject()
     {
         while (transform.position != LevelManager.sharedInstance.despawnTransform.position)
         {
