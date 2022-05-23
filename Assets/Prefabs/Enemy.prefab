@@ -91,6 +91,7 @@ GameObject:
   m_Component:
   - component: {fileID: 875915148722793543}
   - component: {fileID: 7853655168913151819}
+  - component: {fileID: 2101034118579626616}
   - component: {fileID: 5107785918322291473}
   - component: {fileID: 3766565529575163959}
   - component: {fileID: 1407184311750249400}
@@ -129,9 +130,36 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damage: 50
-  baseHealth: 10
   pointsToSpawn: 5
   pointsSpawnRadius: 2
+--- !u!114 &2101034118579626616
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7278439386350436035}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 514dc4a22ae134149b79d4015ac37298, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  OnDied:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 7853655168913151819}
+        m_TargetAssemblyTypeName: Enemy, Assembly-CSharp
+        m_MethodName: OnDied
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  baseHealth: 10
 --- !u!54 &5107785918322291473
 Rigidbody:
   m_ObjectHideFlags: 0

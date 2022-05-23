@@ -2,59 +2,45 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public abstract class Enemy : Damager, IReceiveDamage
+public abstract class Enemy : Damager
 {
-    [SerializeField] float baseHealth;
     [SerializeField] int pointsToSpawn;
     [SerializeField] float pointsSpawnRadius = 3f;
 
-    float currentHealth;
+    Health health;
 
 
 
     public void InitializeEnemy()
     {
-        currentHealth = baseHealth;
-        //set spawn position
+        health = GetComponent<Health>();
+        health.SetFullHealth();
     }
 
     private void OnCollisionEnter(Collision other)
     {
         if (other.gameObject.GetComponent<FireballProjectile>())
         {
-            ReceiveDamage(other.gameObject.GetComponent<FireballProjectile>().GetDamage());
+            health.ReceiveDamage(other.gameObject.GetComponent<FireballProjectile>().GetDamage());
         }
-    }
-
-    public void ReceiveDamage(float damage)
-    {
-        //take damage
-        currentHealth -= damage;
-
-        //If enemy lost all health it should die.
-        if (currentHealth <= 0)
-        {
-            Die();
-        }
-
     }
 
     public void IncreaseHealth(float healthGrowth)
     {
-        if (currentHealth == baseHealth)
+        if (health.hasFullhealth())
         {
-            baseHealth *= healthGrowth;
-            currentHealth = baseHealth;
+            health.baseHealth *= healthGrowth;
+            health.SetFullHealth();
         }
     }
 
-    void Die()
+    public void OnDied()
     {
         //disables the object
         gameObject.SetActive(false);
 
         //resets stats
-        currentHealth = baseHealth;
+        health.SetFullHealth();
 
         //spawns X points around itself
         //I want the points to do the touhou thing where they sorta fly out of the enemy instead of just spawning around

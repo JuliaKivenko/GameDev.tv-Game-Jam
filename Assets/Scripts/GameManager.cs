@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class GameManager : MonoBehaviour
 {
@@ -10,6 +11,7 @@ public class GameManager : MonoBehaviour
     private void Awake()
     {
         sharedInstance = this;
+
     }
 
     private void Update()
@@ -30,7 +32,7 @@ public class GameManager : MonoBehaviour
 
     public void GameOver()
     {
-        //sends message to UI to display the end screen
+        UIManager.sharedInstance.ActivateGameOverPanel();
         //passes on distance value, then sets it to 0
         //stop the level scroll
         //reset everything needed
