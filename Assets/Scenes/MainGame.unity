@@ -1166,10 +1166,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 848e7b01bf1e0fd41ad3e3efc5f1ea90, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  despawnTransform: {fileID: 622445629}
+  levelDifficultyUpInterval: 35
   levelSpeed: 0.035
-  speedIncrease: 1.2
   maxLevelSpeed: 0.7
+  speedIncrease: 1.2
+  enemyHealthIncrease: 1.05
   levelSegments:
   - {fileID: 386381920728681332, guid: 20231433b9feec644b2b8495272c159e, type: 3}
   - {fileID: 5669792981970394437, guid: 6cfbb231a5f00c54a87e66b76abab1e0, type: 3}
@@ -1181,7 +1182,7 @@ MonoBehaviour:
   - {fileID: 5669792981970394437, guid: ad62e2a2752ff664cbc50e6ac5a77fc9, type: 3}
   - {fileID: 5669792981970394437, guid: ad62e2a2752ff664cbc50e6ac5a77fc9, type: 3}
   spawnTransform: {fileID: 1609007163}
-  levelSpeedUpInterval: 35
+  despawnTransform: {fileID: 622445629}
 --- !u!4 &880190733
 Transform:
   m_ObjectHideFlags: 0

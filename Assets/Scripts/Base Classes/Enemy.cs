@@ -39,6 +39,15 @@ public abstract class Enemy : Damager, IReceiveDamage
 
     }
 
+    public void IncreaseHealth(float healthGrowth)
+    {
+        if (currentHealth == baseHealth)
+        {
+            baseHealth *= healthGrowth;
+            currentHealth = baseHealth;
+        }
+    }
+
     void Die()
     {
         //disables the object
