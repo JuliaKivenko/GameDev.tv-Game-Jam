@@ -24,6 +24,7 @@ public class LevelManager : MonoBehaviour
     Transform lastSegmentEnd;
     int lastId = 99;
     float timer;
+    float startLevelSpeed;
 
     private const float DISTANCE_TO_SPAWN_FROM_PLAYER = 30f;
 
@@ -40,6 +41,8 @@ public class LevelManager : MonoBehaviour
             segmentInstance.SetActive(false);
             segmentInstances.Add(segmentInstance.GetComponent<LevelSegment>());
         }
+
+        startLevelSpeed = levelSpeed;
 
     }
 
@@ -64,7 +67,7 @@ public class LevelManager : MonoBehaviour
         {
             foreach (GameObject enemyGameObject in EnemyObjectPool.sharedInstance.objectPool.pooledObjects)
             {
-                enemyGameObject.GetComponent<Enemy>().IncreaseHealth(enemyHealthIncrease);
+                enemyGameObject.GetComponent<EnemyHealth>().IncreaseHealth(enemyHealthIncrease);
             }
 
             if (levelSpeed < maxLevelSpeed)
@@ -112,6 +115,16 @@ public class LevelManager : MonoBehaviour
             scrollingObject.StopScrolling();
         }
         gameObject.SetActive(false);
+    }
+
+    public void ResetDifficulty()
+    {
+        levelSpeed = startLevelSpeed;
+        foreach (GameObject enemyGameObject in EnemyObjectPool.sharedInstance.objectPool.pooledObjects)
+        {
+            enemyGameObject.GetComponent<EnemyHealth>().ResetHealth();
+        }
+
     }
 
 

@@ -6,7 +6,7 @@ public abstract class Enemy : Damager
 {
     [SerializeField] int pointsToSpawn;
     [SerializeField] float pointsSpawnRadius = 3f;
-    [SerializeField] Health health;
+    [SerializeField] EnemyHealth health;
 
 
 
@@ -23,14 +23,7 @@ public abstract class Enemy : Damager
         }
     }
 
-    public void IncreaseHealth(float healthGrowth)
-    {
-        if (health.hasFullhealth())
-        {
-            health.baseHealth *= healthGrowth;
-            health.SetFullHealth();
-        }
-    }
+
 
     public void OnDied()
     {

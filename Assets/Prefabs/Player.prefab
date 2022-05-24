@@ -269,7 +269,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7785142338467295331}
   - component: {fileID: 7785142338467295330}
-  - component: {fileID: 5791518766222777575}
+  - component: {fileID: 5884103471539906821}
   m_Layer: 6
   m_Name: Player
   m_TagString: Untagged
@@ -309,10 +309,10 @@ MonoBehaviour:
   rechargeSpeed: 4
   flyForceMultiplier: 40
   invulnerabilityLength: 1
-  health: {fileID: 5791518766222777575}
+  health: {fileID: 5884103471539906821}
   fireballSocket: {fileID: 177911139499536042}
   fireball: {fileID: 4286920690739996324, guid: 5205a1b97a075ff4f843097cf4c7162a, type: 3}
---- !u!114 &5791518766222777575
+--- !u!114 &5884103471539906821
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -321,7 +321,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 7785142338467295329}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 514dc4a22ae134149b79d4015ac37298, type: 3}
+  m_Script: {fileID: 11500000, guid: 5281f5a705c11a04fb5d217696efce17, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   OnDied:
@@ -340,3 +340,4 @@ MonoBehaviour:
           m_BoolArgument: 0
         m_CallState: 2
   baseHealth: 100
+  currentHealth: 0

@@ -3,11 +3,12 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
-public class Health : MonoBehaviour
+public abstract class Health : MonoBehaviour
 {
     public UnityEvent OnDied;
     public float baseHealth;
     public float currentHealth;
+
 
     public void SetFullHealth()
     {

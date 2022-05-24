@@ -10,7 +10,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] float rechargeSpeed;
     [SerializeField] float flyForceMultiplier;
     [SerializeField] float invulnerabilityLength;
-    public Health health;
+    public PlayerHealth health;
 
     [Header("Projectile")]
     [SerializeField] Transform fireballSocket;

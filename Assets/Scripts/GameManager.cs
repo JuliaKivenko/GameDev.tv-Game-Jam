@@ -50,6 +50,7 @@ public class GameManager : MonoBehaviour
     public void StartGame()
     {
         PlayerController.sharedInstance.ActivatePlayerCharacter();
+        LevelManager.sharedInstance.ResetDifficulty();
         LevelManager.sharedInstance.StartLevelGeneration();
         _distance = 0;
         _pointsForThisRun = 0;
