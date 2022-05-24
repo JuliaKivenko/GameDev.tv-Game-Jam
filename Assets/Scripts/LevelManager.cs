@@ -41,13 +41,15 @@ public class LevelManager : MonoBehaviour
             segmentInstances.Add(segmentInstance.GetComponent<LevelSegment>());
         }
 
-        lastSegmentEnd = spawnTransform;
-        SpawnNextSegment();
-
     }
 
     private void Update()
     {
+        if (!GameManager.sharedInstance.isGameRunning)
+        {
+            return;
+        }
+
         //if player's distance from segment end is less than defined in the variable, spawn next segment
         if (Vector3.Distance(PlayerController.sharedInstance.transform.position, lastSegmentEnd.position) < DISTANCE_TO_SPAWN_FROM_PLAYER)
         {
@@ -91,6 +93,24 @@ public class LevelManager : MonoBehaviour
     public float GetLevelSpeed()
     {
         return levelSpeed;
+    }
+
+    public void StartLevelGeneration()
+    {
+        gameObject.SetActive(true);
+        timer = 0;
+        lastSegmentEnd = spawnTransform;
+        SpawnNextSegment();
+    }
+
+    public void StopLevelGeneration()
+    {
+        foreach (LevelSegment levelSegment in segmentInstances)
+        {
+            ScrollingObject scrollingObject = GetComponent<ScrollingObject>();
+            scrollingObject.StopScrolling();
+        }
+        gameObject.SetActive(false);
     }
 
 

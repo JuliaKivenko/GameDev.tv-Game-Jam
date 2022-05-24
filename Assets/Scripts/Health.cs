@@ -7,8 +7,7 @@ public class Health : MonoBehaviour
 {
     public UnityEvent OnDied;
     public float baseHealth;
-
-    float currentHealth;
+    public float currentHealth;
 
     public void SetFullHealth()
     {

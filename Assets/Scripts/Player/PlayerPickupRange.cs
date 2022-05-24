@@ -6,7 +6,7 @@ public class PlayerPickupRange : MonoBehaviour
 {
     [SerializeField] PlayerCollider playerCollider;
 
-    private void LateUpdate()
+    private void Update()
     {
         transform.position = playerCollider.transform.position;
     }
@@ -14,7 +14,7 @@ public class PlayerPickupRange : MonoBehaviour
     {
         if (other.gameObject.GetComponent<Pickup>())
         {
-            StartCoroutine(other.gameObject.GetComponent<Pickup>().FlyToPlayer(PlayerController.sharedInstance.transform.position));
+            StartCoroutine(other.gameObject.GetComponent<Pickup>().FlyToPlayer(playerCollider.transform.position));
         }
     }
 }

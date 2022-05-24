@@ -21,6 +21,7 @@ public class PlayerController : MonoBehaviour
     float currentRechargeTime;
     float move = 0;
     bool invulnerabilityActive = false;
+    bool enableControls = true;
 
     public static PlayerController sharedInstance;
 
@@ -30,6 +31,8 @@ public class PlayerController : MonoBehaviour
         currentRechargeTime = rechargeTime;
         health.SetFullHealth();
 
+        DeactivatePlayerCharacter();
+
         sharedInstance = this;
 
     }
@@ -37,7 +40,8 @@ public class PlayerController : MonoBehaviour
 
     void Update()
     {
-        ManageInput();
+        if (enableControls)
+            ManageInput();
     }
 
     private void FixedUpdate()
@@ -104,13 +108,35 @@ public class PlayerController : MonoBehaviour
 
     public void OnDie()
     {
-        //GameOver
         GameManager.sharedInstance.GameOver();
     }
 
     public Vector3 GetVelocity()
     {
         return playerRigidbody.velocity;
+    }
+
+    public void DeactivatePlayerCharacter()
+    {
+        enableControls = false;
+        playerRigidbody.velocity = Vector3.zero;
+        playerRigidbody.isKinematic = true;
+        StopAllCoroutines();
+        gameObject.SetActive(false);
+    }
+
+    public void ActivatePlayerCharacter()
+    {
+        enableControls = true;
+        playerRigidbody.isKinematic = false;
+        currentRechargeTime = rechargeTime;
+        health.SetFullHealth();
+        gameObject.SetActive(true);
+    }
+
+    public float GetFireballRechargeProgress()
+    {
+        return currentRechargeTime / rechargeTime;
     }
 
 
