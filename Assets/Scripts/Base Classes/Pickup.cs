@@ -12,6 +12,7 @@ public abstract class Pickup : MonoBehaviour
     private void Start()
     {
         scrollingObject = GetComponent<ScrollingObject>();
+
     }
 
     public abstract void ApplyEffectOnPlayer();
@@ -25,6 +26,21 @@ public abstract class Pickup : MonoBehaviour
         }
         ApplyEffectOnPlayer();
         gameObject.SetActive(false);
+    }
+
+    void onGameOver()
+    {
+        gameObject.SetActive(false);
+    }
+
+    private void OnEnable()
+    {
+        GameManager.onGameOver += onGameOver;
+    }
+
+    private void OnDisable()
+    {
+        GameManager.onGameOver -= onGameOver;
     }
 
 

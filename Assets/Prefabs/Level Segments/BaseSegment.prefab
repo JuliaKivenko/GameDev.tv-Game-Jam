@@ -40,6 +40,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4046674477491949135}
   - component: {fileID: 386381920728681332}
+  - component: {fileID: 5548443407345565499}
   m_Layer: 0
   m_Name: BaseSegment
   m_TagString: Untagged
@@ -81,6 +82,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   endPosition: {fileID: 2269616896574243245}
+  scrollingObject: {fileID: 5548443407345565499}
+  enemySpawnPoints: []
+--- !u!114 &5548443407345565499
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4046674477491949134}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cffab492469d74e4da474cd75737b1cd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &4046674476608512929
 PrefabInstance:
   m_ObjectHideFlags: 0

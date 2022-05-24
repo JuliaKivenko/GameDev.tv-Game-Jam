@@ -9,7 +9,15 @@ public abstract class Enemy : Damager
     [SerializeField] EnemyHealth health;
 
 
+    private void OnEnable()
+    {
+        GameManager.onGameOver += OnGameOver;
+    }
 
+    private void OnDisable()
+    {
+        GameManager.onGameOver -= OnGameOver;
+    }
     public void InitializeEnemy()
     {
         health.SetFullHealth();
@@ -22,8 +30,6 @@ public abstract class Enemy : Damager
             health.ReceiveDamage(other.gameObject.GetComponent<FireballProjectile>().GetDamage());
         }
     }
-
-
 
     public void OnDied()
     {
@@ -46,6 +52,12 @@ public abstract class Enemy : Damager
             }
         }
 
+    }
+
+    void OnGameOver()
+    {
+        gameObject.SetActive(false);
+        health.ResetHealth();
     }
 
 

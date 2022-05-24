@@ -8,10 +8,12 @@ public class ScrollingObject : MonoBehaviour
     private void OnEnable()
     {
         scrollCoroutine = StartCoroutine(ScrollObject());
+        GameManager.onGameOver += OnGameOver;
     }
 
     private void OnDisable()
     {
+        GameManager.onGameOver -= OnGameOver;
         StopScrolling();
     }
 
@@ -28,5 +30,10 @@ public class ScrollingObject : MonoBehaviour
             yield return null;
         }
         gameObject.SetActive(false);
+    }
+
+    void OnGameOver()
+    {
+        StopScrolling();
     }
 }

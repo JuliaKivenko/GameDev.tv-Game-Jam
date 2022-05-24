@@ -19,6 +19,9 @@ public class GameManager : MonoBehaviour
 
     public bool isGameRunning = true;
 
+    public delegate void GameOverAction();
+    public static event GameOverAction onGameOver;
+
     private void Awake()
     {
         timePassed = 0;
@@ -50,7 +53,6 @@ public class GameManager : MonoBehaviour
     public void StartGame()
     {
         PlayerController.sharedInstance.ActivatePlayerCharacter();
-        LevelManager.sharedInstance.ResetDifficulty();
         LevelManager.sharedInstance.StartLevelGeneration();
         _distance = 0;
         _pointsForThisRun = 0;
@@ -59,20 +61,21 @@ public class GameManager : MonoBehaviour
         //Initializes all the things needed to play the game, like player, object pools and stuff
         //In the future would also be applying increased player stats?
     }
-    public void StopGame()
-    {
-        isGameRunning = false;
-        PlayerController.sharedInstance.DeactivatePlayerCharacter();
-        LevelManager.sharedInstance.StopLevelGeneration();
-    }
 
     public void GameOver()
     {
         UIManager.sharedInstance.ActivateGameOverPanel();
-        StopGame();
-        //stop the level scroll
-        //reset everything needed
 
+        isGameRunning = false;
+
+        if (onGameOver != null)
+            onGameOver.Invoke();
+    }
+
+    public void StopGame()
+    {
+        isGameRunning = false;
+        LevelManager.sharedInstance.StopLevelGeneration();
     }
 
 

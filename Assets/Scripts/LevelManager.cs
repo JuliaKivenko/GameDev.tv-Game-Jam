@@ -33,6 +33,7 @@ public class LevelManager : MonoBehaviour
         sharedInstance = this;
     }
 
+
     void Start()
     {
         for (int i = 0; i < levelSegments.Count; i++)
@@ -109,24 +110,28 @@ public class LevelManager : MonoBehaviour
 
     public void StopLevelGeneration()
     {
+        //Deactivate all the visible level segments 
         foreach (LevelSegment levelSegment in segmentInstances)
         {
-            ScrollingObject scrollingObject = GetComponent<ScrollingObject>();
-            scrollingObject.StopScrolling();
+            if (levelSegment.gameObject.activeInHierarchy)
+                levelSegment.gameObject.SetActive(false);
         }
+
+        //Reset speed of the level to the starting speed
+        levelSpeed = startLevelSpeed;
+
+        //Deactivate level generator
         gameObject.SetActive(false);
     }
 
-    public void ResetDifficulty()
+    private void OnEnable()
     {
-        levelSpeed = startLevelSpeed;
-        foreach (GameObject enemyGameObject in EnemyObjectPool.sharedInstance.objectPool.pooledObjects)
-        {
-            enemyGameObject.GetComponent<EnemyHealth>().ResetHealth();
-        }
-
+        GameManager.onGameOver += StopLevelGeneration;
     }
 
-
+    private void OnDisable()
+    {
+        GameManager.onGameOver -= StopLevelGeneration;
+    }
 
 }

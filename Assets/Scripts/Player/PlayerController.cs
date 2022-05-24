@@ -25,13 +25,24 @@ public class PlayerController : MonoBehaviour
 
     public static PlayerController sharedInstance;
 
+
+    private void OnEnable()
+    {
+        GameManager.onGameOver += DeactivatePlayer;
+    }
+
+    private void OnDisable()
+    {
+        GameManager.onGameOver += DeactivatePlayer;
+    }
+
     void Start()
     {
         playerRigidbody = GetComponentInChildren<Rigidbody>();
         currentRechargeTime = rechargeTime;
         health.SetFullHealth();
 
-        DeactivatePlayerCharacter();
+        DeactivatePlayer();
 
         sharedInstance = this;
 
@@ -116,7 +127,7 @@ public class PlayerController : MonoBehaviour
         return playerRigidbody.velocity;
     }
 
-    public void DeactivatePlayerCharacter()
+    void DeactivatePlayer()
     {
         enableControls = false;
         playerRigidbody.velocity = Vector3.zero;

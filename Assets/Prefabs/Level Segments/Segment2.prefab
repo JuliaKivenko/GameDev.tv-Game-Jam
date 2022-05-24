@@ -91,6 +91,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   endPosition: {fileID: 4666022521048263878}
+  scrollingObject: {fileID: 9042215022660825681}
   enemySpawnPoints:
   - {fileID: 4425410194327588267}
   - {fileID: 6329893413009942164}
