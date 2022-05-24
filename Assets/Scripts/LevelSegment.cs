@@ -6,14 +6,8 @@ using UnityEngine;
 public class LevelSegment : MonoBehaviour
 {
     public Transform endPosition;
-    public Component[] enemySpawnPoints;
 
-    private void Start()
-    {
-        //Get all the enemy spawn points in the level segment
-        enemySpawnPoints = GetComponentsInChildren(typeof(EnemySpawnPoint));
-
-    }
+    [SerializeField] List<EnemySpawnPoint> enemySpawnPoints = new List<EnemySpawnPoint>();
 
     //Loop through all the enemy spawn points in the segment and spawn enemies from the pool on each point
     public void ActivateEnemies()

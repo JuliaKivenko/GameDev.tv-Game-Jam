@@ -2569,7 +2569,7 @@ MonoBehaviour:
   objectPool:
     pooledObjects: []
     objectToPool: {fileID: 7278439386350436035, guid: 7aede683fc05e024bba348a523e7446b, type: 3}
-    amountToPool: 20
+    amountToPool: 30
 --- !u!1 &1151501418
 GameObject:
   m_ObjectHideFlags: 0
@@ -4213,6 +4213,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f89de965033796b44879030472a022e8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isGameRunning: 1
 --- !u!4 &2108284928
 Transform:
   m_ObjectHideFlags: 0
