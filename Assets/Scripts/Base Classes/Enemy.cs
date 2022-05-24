@@ -6,14 +6,12 @@ public abstract class Enemy : Damager
 {
     [SerializeField] int pointsToSpawn;
     [SerializeField] float pointsSpawnRadius = 3f;
-
-    Health health;
+    [SerializeField] Health health;
 
 
 
     public void InitializeEnemy()
     {
-        health = GetComponent<Health>();
         health.SetFullHealth();
     }
 

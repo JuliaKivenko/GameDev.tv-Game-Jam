@@ -132,6 +132,7 @@ MonoBehaviour:
   damage: 50
   pointsToSpawn: 5
   pointsSpawnRadius: 2
+  health: {fileID: 2101034118579626616}
 --- !u!114 &2101034118579626616
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -160,6 +161,7 @@ MonoBehaviour:
           m_BoolArgument: 0
         m_CallState: 2
   baseHealth: 10
+  currentHealth: 0
 --- !u!54 &5107785918322291473
 Rigidbody:
   m_ObjectHideFlags: 0
