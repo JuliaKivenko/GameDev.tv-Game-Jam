@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class EnemySpawnPoint : MonoBehaviour
 {
-    private void OnEnable()
+    public void SpawnEnemy()
     {
         GameObject enemyObject = EnemyObjectPool.sharedInstance.objectPool.GetPooledObject();
         if (enemyObject != null)

@@ -86,6 +86,7 @@ public class LevelManager : MonoBehaviour
         }
         segmentInstances[id].gameObject.transform.position = lastSegmentEnd.position;
         segmentInstances[id].gameObject.SetActive(true);
+        segmentInstances[id].ActivateEnemies();
         lastSegmentEnd = segmentInstances[id].endPosition;
         lastId = id;
     }
