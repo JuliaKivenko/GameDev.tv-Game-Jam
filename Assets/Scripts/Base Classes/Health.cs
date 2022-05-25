@@ -28,6 +28,12 @@ public abstract class Health : MonoBehaviour
 
     }
 
+    public virtual void ModifyHealth(float multiplier)
+    {
+        baseHealth *= multiplier;
+        SetFullHealth();
+    }
+
     public bool hasFullhealth()
     {
         return currentHealth == baseHealth;

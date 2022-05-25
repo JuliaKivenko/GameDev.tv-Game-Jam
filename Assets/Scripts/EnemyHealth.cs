@@ -17,7 +17,7 @@ public class EnemyHealth : Health
         currentHealth = startHealth;
     }
 
-    public void IncreaseHealth(float healthGrowth)
+    public override void ModifyHealth(float healthGrowth)
     {
         if (hasFullhealth())
         {

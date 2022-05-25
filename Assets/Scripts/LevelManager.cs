@@ -68,7 +68,7 @@ public class LevelManager : MonoBehaviour
         {
             foreach (GameObject enemyGameObject in EnemyObjectPool.sharedInstance.objectPool.pooledObjects)
             {
-                enemyGameObject.GetComponent<EnemyHealth>().IncreaseHealth(enemyHealthIncrease);
+                enemyGameObject.GetComponent<EnemyHealth>().ModifyHealth(enemyHealthIncrease);
             }
 
             if (levelSpeed < maxLevelSpeed)

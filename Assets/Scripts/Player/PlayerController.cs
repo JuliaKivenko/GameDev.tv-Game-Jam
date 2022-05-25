@@ -24,6 +24,8 @@ public class PlayerController : MonoBehaviour
     bool enableControls = true;
     public Vector3 startPosition;
 
+    public PlayerStats playerStats;
+
     public static PlayerController sharedInstance;
 
 

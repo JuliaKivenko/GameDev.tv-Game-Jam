@@ -20,6 +20,7 @@ public class UIManager : MonoBehaviour
 
     [Header("Start Screen")]
     [SerializeField] GameObject startPanel;
+    [SerializeField] TextMeshProUGUI pointsText;
 
     private void Awake()
     {
@@ -34,6 +35,7 @@ public class UIManager : MonoBehaviour
 
         //in the future this will hold value of the points player has overall
         hudPointsCounter.text = "0";
+        pointsText.text = "0";
     }
 
     private void Update()
@@ -53,14 +55,22 @@ public class UIManager : MonoBehaviour
     {
         gameOverPanel.SetActive(false);
         startPanel.SetActive(true);
+        pointsText.text = GameManager.sharedInstance.points.ToString();
+        Upgrade.onBuyUpgrade += OnBuyUpgrade;
     }
 
     public void DeactivateStartPanel()
     {
         startPanel.SetActive(false);
         hudPanel.SetActive(true);
+        Upgrade.onBuyUpgrade -= OnBuyUpgrade;
 
         //remove this in the future maybe and make game manager subscribe to onclick if possible?
         GameManager.sharedInstance.StartGame();
+    }
+
+    public void OnBuyUpgrade()
+    {
+        pointsText.text = GameManager.sharedInstance.points.ToString();
     }
 }

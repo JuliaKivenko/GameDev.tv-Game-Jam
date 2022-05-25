@@ -29,4 +29,9 @@ public abstract class Projectile : Damager
         return GeometryUtility.TestPlanesAABB(planes, projectileCollider.bounds);
     }
 
+    public void ModifyDamage(float multiplier)
+    {
+        damage *= multiplier;
+    }
+
 }

@@ -270,6 +270,7 @@ GameObject:
   - component: {fileID: 7785142338467295331}
   - component: {fileID: 7785142338467295330}
   - component: {fileID: 5884103471539906821}
+  - component: {fileID: 7389884913248501372}
   m_Layer: 6
   m_Name: Player
   m_TagString: Untagged
@@ -312,6 +313,8 @@ MonoBehaviour:
   health: {fileID: 5884103471539906821}
   fireballSocket: {fileID: 177911139499536042}
   fireball: {fileID: 4286920690739996324, guid: 5205a1b97a075ff4f843097cf4c7162a, type: 3}
+  startPosition: {x: 0, y: 0, z: 0}
+  playerStats: {fileID: 7389884913248501372}
 --- !u!114 &5884103471539906821
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -341,3 +344,15 @@ MonoBehaviour:
         m_CallState: 2
   baseHealth: 100
   currentHealth: 0
+--- !u!114 &7389884913248501372
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7785142338467295329}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2aa4baaa8bc1ff24591e2a739afcf60f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
