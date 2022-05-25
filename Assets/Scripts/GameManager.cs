@@ -47,7 +47,11 @@ public class GameManager : MonoBehaviour
     {
         _points += pointsToAdd;
         _pointsForThisRun += pointsToAdd;
-        Debug.Log("+" + pointsToAdd + "! You now have " + points + " points.");
+    }
+
+    public void SubstractPoints(int pointsToSubstract)
+    {
+        _points -= pointsToSubstract;
     }
 
     public void StartGame()

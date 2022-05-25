@@ -32,7 +32,7 @@ public class Upgrade : ScriptableObject
         }
 
         //Subtract price from the overal points player has
-        GameManager.sharedInstance.points -= upgradePrice;
+        GameManager.sharedInstance.SubstractPoints(upgradePrice);
 
         //Invoke OnBuyUpgrade event
         if (onBuyUpgrade != null)
