@@ -22,6 +22,7 @@ public class PlayerController : MonoBehaviour
     float move = 0;
     bool invulnerabilityActive = false;
     bool enableControls = true;
+    public Vector3 startPosition;
 
     public static PlayerController sharedInstance;
 
@@ -41,6 +42,7 @@ public class PlayerController : MonoBehaviour
         playerRigidbody = GetComponentInChildren<Rigidbody>();
         currentRechargeTime = rechargeTime;
         health.SetFullHealth();
+        startPosition = transform.position;
 
         DeactivatePlayer();
 
@@ -131,6 +133,7 @@ public class PlayerController : MonoBehaviour
     {
         enableControls = false;
         playerRigidbody.velocity = Vector3.zero;
+        playerRigidbody.transform.position = startPosition;
         playerRigidbody.isKinematic = true;
         StopAllCoroutines();
         gameObject.SetActive(false);
