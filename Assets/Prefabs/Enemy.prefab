@@ -91,7 +91,7 @@ GameObject:
   m_Component:
   - component: {fileID: 875915148722793543}
   - component: {fileID: 7853655168913151819}
-  - component: {fileID: 5107785918322291473}
+  - component: {fileID: 7076365036158692655}
   - component: {fileID: 3766565529575163959}
   - component: {fileID: 1407184311750249400}
   - component: {fileID: 3996617471223856110}
@@ -133,7 +133,7 @@ MonoBehaviour:
   pointsToSpawn: 5
   pointsSpawnRadius: 2
   health: {fileID: 3996617471223856110}
---- !u!54 &5107785918322291473
+--- !u!54 &7076365036158692655
 Rigidbody:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -160,8 +160,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1.2585641, y: 1.1295966, z: 1.8837156}
-  m_Center: {x: 0.0152878165, y: 0.25245982, z: 0.046275616}
+  m_Size: {x: 1.2585641, y: 1.4638467, z: 1.8837156}
+  m_Center: {x: 0.0152878165, y: -0.023070663, z: 0.046275616}
 --- !u!114 &1407184311750249400
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -47,7 +47,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cee636b23cb0f2e46bfa6773b0052133, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  flySpeed: 0.1
+  flySpeed: 0.7
   pointValue: 1
 --- !u!54 &6323996149306092973
 Rigidbody:

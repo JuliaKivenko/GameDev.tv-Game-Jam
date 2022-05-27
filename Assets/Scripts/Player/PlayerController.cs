@@ -99,7 +99,7 @@ public class PlayerController : MonoBehaviour
         //If fully charged, shoot the fireball and set to recharge
         currentRechargeTime = 0;
 
-        GameObject fireballProjectile = FireballObjectPool.sharedInstance.objectPool.GetPooledObject();
+        GameObject fireballProjectile = FireballObjectPool.sharedInstance.GetPooledObject();
         if (fireballProjectile != null)
         {
             fireballProjectile.transform.position = fireballSocket.position;

@@ -2,11 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PickUpObjectPool : MonoBehaviour
+public class PickUpObjectPool : ObjectPool
 {
 
     public static PickUpObjectPool sharedInstance;
-    public ObjectPool objectPool;
 
 
     void Awake()
@@ -16,6 +15,6 @@ public class PickUpObjectPool : MonoBehaviour
 
     private void Start()
     {
-        objectPool.InitializeObjectPool(gameObject);
+        InitializeObjectPool(gameObject);
     }
 }

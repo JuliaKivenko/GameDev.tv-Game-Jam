@@ -11,6 +11,7 @@ public abstract class Enemy : Damager
 
     private void OnEnable()
     {
+        health.SetFullHealth();
         GameManager.onGameOver += OnGameOver;
     }
 
@@ -43,7 +44,7 @@ public abstract class Enemy : Damager
         //I want the points to do the touhou thing where they sorta fly out of the enemy instead of just spawning around
         for (int i = 0; i < pointsToSpawn; i++)
         {
-            GameObject pointPickup = PickUpObjectPool.sharedInstance.objectPool.GetPooledObject();
+            GameObject pointPickup = PickUpObjectPool.sharedInstance.GetPooledObject();
             if (pointPickup != null)
             {
                 pointPickup.transform.position = Random.insideUnitCircle * pointsSpawnRadius + new Vector2(transform.position.x, transform.position.y);

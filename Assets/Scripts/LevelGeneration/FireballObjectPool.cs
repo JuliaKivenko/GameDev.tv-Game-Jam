@@ -2,10 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class FireballObjectPool : MonoBehaviour
+public class FireballObjectPool : ObjectPool
 {
     public static FireballObjectPool sharedInstance;
-    public ObjectPool objectPool;
 
     private void Awake()
     {
@@ -14,6 +13,6 @@ public class FireballObjectPool : MonoBehaviour
 
     private void Start()
     {
-        objectPool.InitializeObjectPool(gameObject);
+        InitializeObjectPool(gameObject);
     }
 }

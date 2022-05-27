@@ -66,7 +66,7 @@ public class LevelManager : MonoBehaviour
         //increase level speed and all the enemies health once it is time to increase difficulty
         if (timer >= levelDifficultyUpInterval)
         {
-            foreach (GameObject enemyGameObject in EnemyObjectPool.sharedInstance.objectPool.pooledObjects)
+            foreach (GameObject enemyGameObject in EnemyObjectPool.sharedInstance.pooledObjects)
             {
                 enemyGameObject.GetComponent<EnemyHealth>().ModifyHealth(enemyHealthIncrease);
             }
@@ -90,7 +90,7 @@ public class LevelManager : MonoBehaviour
         }
         segmentInstances[id].gameObject.transform.position = lastSegmentEnd.position;
         segmentInstances[id].gameObject.SetActive(true);
-        segmentInstances[id].ActivateEnemies();
+        segmentInstances[id].SpawnAllObjects();
         lastSegmentEnd = segmentInstances[id].endPosition;
         lastId = id;
     }

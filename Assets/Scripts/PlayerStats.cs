@@ -13,7 +13,7 @@ public class PlayerStats : MonoBehaviour
         }
         if (playerStat == statTypes.Damage)
         {
-            foreach (GameObject fireBall in FireballObjectPool.sharedInstance.objectPool.pooledObjects)
+            foreach (GameObject fireBall in FireballObjectPool.sharedInstance.pooledObjects)
             {
                 fireBall.GetComponent<FireballProjectile>().ModifyDamage(multiplier);
             }

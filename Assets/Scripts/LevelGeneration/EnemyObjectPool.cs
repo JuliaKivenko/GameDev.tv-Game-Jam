@@ -2,11 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemyObjectPool : MonoBehaviour
+public class EnemyObjectPool : ObjectPool
 {
     public static EnemyObjectPool sharedInstance;
 
-    public ObjectPool objectPool;
 
     private void Awake()
     {
@@ -15,7 +14,7 @@ public class EnemyObjectPool : MonoBehaviour
 
     void Start()
     {
-        objectPool.InitializeObjectPool(gameObject);
+        InitializeObjectPool(gameObject);
     }
 
 }
