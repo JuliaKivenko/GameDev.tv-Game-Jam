@@ -24,7 +24,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1065992468683170900}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: -1.799, z: 0}
+  m_LocalPosition: {x: -0, y: -1.63, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 7785142338267163510}
@@ -307,7 +307,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 285498ac36f44224fa13f02bd3a0cd73, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rechargeTime: 1
+  rechargeTime: 2
   rechargeSpeed: 4
   flyForceMultiplier: 40
   invulnerabilityLength: 1

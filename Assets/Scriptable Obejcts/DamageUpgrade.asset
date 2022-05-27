@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   upgradeName: Damage
   upgradeType: 1
-  upgradeVisual: {fileID: 0}
+  upgradeVisual: {fileID: 21300000, guid: a112c1794eec7a04bac5bddd5bb39123, type: 3}
   upgradePrice: 100
   upgradePriceMultiplier: 1.2
   upgradeLevel: 1

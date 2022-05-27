@@ -9,15 +9,16 @@ public class UpgradeDisplay : MonoBehaviour
     public Upgrade upgrade;
 
     [SerializeField] TextMeshProUGUI upgradeName;
-    [SerializeField] Sprite upgradeImage;
+    [SerializeField] Image upgradeImage;
     [SerializeField] TextMeshProUGUI upgradeLevel;
     [SerializeField] TextMeshProUGUI upgradePrice;
+
 
 
     private void Start()
     {
         upgradeName.text = upgrade.upgradeName;
-        upgradeImage = upgrade.upgradeVisual;
+        upgradeImage.sprite = upgrade.upgradeVisual;
         upgradeLevel.text = "Lvl. " + upgrade.upgradeLevel.ToString();
         upgradePrice.text = upgrade.upgradePrice.ToString() + "$ Buy";
     }

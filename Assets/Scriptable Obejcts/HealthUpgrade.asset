@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   upgradeName: Health
   upgradeType: 0
-  upgradeVisual: {fileID: 0}
+  upgradeVisual: {fileID: 21300000, guid: 80011ab684356404987a26a607d09ff1, type: 3}
   upgradePrice: 50
   upgradePriceMultiplier: 1.5
   upgradeLevel: 1
