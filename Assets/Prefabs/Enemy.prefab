@@ -301,7 +301,8 @@ MonoBehaviour:
   pointsToSpawn: 5
   pointsSpawnRadius: 2
   health: {fileID: 3996617471223856110}
-  enemyHealthBar: {fileID: 6634155271752309776}
+  enemyHealthbar: {fileID: 6634155271752309776}
+  healthbarFill: {fileID: 1027702394770558238}
 --- !u!54 &7076365036158692655
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -385,7 +386,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-  baseHealth: 10
+  baseHealth: 20
   currentHealth: 0
 --- !u!1 &9061286850880177312
 GameObject:

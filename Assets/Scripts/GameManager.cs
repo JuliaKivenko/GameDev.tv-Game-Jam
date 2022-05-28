@@ -70,6 +70,11 @@ public class GameManager : MonoBehaviour
     {
         UIManager.sharedInstance.ActivateGameOverPanel();
 
+        foreach (GameObject enemyGameObject in EnemyObjectPool.sharedInstance.pooledObjects)
+        {
+            enemyGameObject.GetComponent<EnemyHealth>().ResetHealth();
+        }
+
         isGameRunning = false;
 
         if (onGameOver != null)

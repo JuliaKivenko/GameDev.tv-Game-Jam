@@ -1,20 +1,23 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public abstract class Enemy : Damager
 {
     [SerializeField] int pointsToSpawn;
     [SerializeField] float pointsSpawnRadius = 3f;
     [SerializeField] EnemyHealth health;
-    [SerializeField] GameObject enemyHealthBar;
+    [SerializeField] GameObject enemyHealthbar;
+    [SerializeField] Image healthbarFill;
+
+    public bool enableHealthBar = false;
 
 
 
     private void OnEnable()
     {
-        health.SetFullHealth();
-        enemyHealthBar.SetActive(false);
+        enableHealthBar = false;
         GameManager.onGameOver += OnGameOver;
     }
 
@@ -22,9 +25,17 @@ public abstract class Enemy : Damager
     {
         GameManager.onGameOver -= OnGameOver;
     }
-    public void InitializeEnemy()
+
+    private void Update()
     {
-        health.SetFullHealth();
+        if (!enableHealthBar)
+        {
+            enemyHealthbar.SetActive(false);
+        }
+        if (enableHealthBar)
+        {
+            enemyHealthbar.SetActive(true);
+        }
     }
 
     private void OnCollisionEnter(Collision other)
@@ -32,8 +43,7 @@ public abstract class Enemy : Damager
         if (other.gameObject.GetComponent<FireballProjectile>())
         {
             health.ReceiveDamage(other.gameObject.GetComponent<FireballProjectile>().GetDamage());
-            if (health.currentHealth != 0)
-                enemyHealthBar.SetActive(true);
+            enableHealthBar = true;
         }
     }
 
@@ -42,6 +52,9 @@ public abstract class Enemy : Damager
     {
         //resets stats
         health.SetFullHealth();
+        enableHealthBar = false;
+        healthbarFill.fillAmount = 1;
+        enemyHealthbar.SetActive(false);
 
         //spawns X points around itself
         //I want the points to do the touhou thing where they sorta fly out of the enemy instead of just spawning around
@@ -64,7 +77,6 @@ public abstract class Enemy : Damager
     void OnGameOver()
     {
         gameObject.SetActive(false);
-        health.ResetHealth();
     }
 
 
