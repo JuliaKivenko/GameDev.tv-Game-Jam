@@ -2960,6 +2960,8 @@ MonoBehaviour:
   - {fileID: 386381920728681332, guid: c1bba495c4d70d342aa463f5228e59f3, type: 3}
   - {fileID: 386381920728681332, guid: 60f379a5213fe5046838ed8ff5c6c29f, type: 3}
   - {fileID: 386381920728681332, guid: 83a04ae77373ec14c9c3d638fafece73, type: 3}
+  - {fileID: 386381920728681332, guid: e02f3c70714443f45861d49d47091220, type: 3}
+  - {fileID: 386381920728681332, guid: 7f27634a3e1c95d44b0f5de4d7421d0d, type: 3}
   spawnTransform: {fileID: 1609007163}
   despawnTransform: {fileID: 622445629}
 --- !u!4 &880190733
