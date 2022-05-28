@@ -18,6 +18,7 @@ public class LifebarFill : MonoBehaviour
     void Update()
     {
         healthBar.fillAmount = PlayerController.sharedInstance.health.currentHealth / PlayerController.sharedInstance.health.baseHealth;
-        healthbarText.text = PlayerController.sharedInstance.health.currentHealth + "/" + PlayerController.sharedInstance.health.baseHealth;
+        float playerHealthRoundUp = Mathf.Round(PlayerController.sharedInstance.health.currentHealth);
+        healthbarText.text = playerHealthRoundUp + "/" + PlayerController.sharedInstance.health.baseHealth;
     }
 }

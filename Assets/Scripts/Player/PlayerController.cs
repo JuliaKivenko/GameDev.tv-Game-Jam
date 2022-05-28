@@ -72,7 +72,6 @@ public class PlayerController : MonoBehaviour
         }
         if (Input.GetKey(KeyCode.Mouse0))
         {
-            //Smoothly fly up up to a certain limit
             move = 1;
         }
         if (Input.GetKeyUp(KeyCode.Mouse0))
@@ -137,6 +136,7 @@ public class PlayerController : MonoBehaviour
         playerRigidbody.velocity = Vector3.zero;
         playerRigidbody.transform.position = startPosition;
         playerRigidbody.isKinematic = true;
+        move = 0;
         StopAllCoroutines();
         gameObject.SetActive(false);
     }

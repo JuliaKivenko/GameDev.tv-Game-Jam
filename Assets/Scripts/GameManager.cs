@@ -39,7 +39,7 @@ public class GameManager : MonoBehaviour
         if (isGameRunning)
         {
             timePassed += Time.deltaTime;
-            _distance = Mathf.Round(timePassed * LevelManager.sharedInstance.GetLevelSpeed() * 100);
+            _distance = Mathf.Round(timePassed * LevelManager.sharedInstance.GetLevelSpeed());
         }
 
     }

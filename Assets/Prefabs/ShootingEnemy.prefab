@@ -415,7 +415,7 @@ MonoBehaviour:
   pointsSpawnRadius: 2
   health: {fileID: 3996617471223856110}
   enemyHealthBar: {fileID: 6634155271752309776}
-  shootingInterval: 0.5
+  shootingInterval: 1
   shootSocket: {fileID: 6493070498908844067}
 --- !u!54 &7076365036158692655
 Rigidbody:
@@ -473,7 +473,7 @@ MonoBehaviour:
   OnDied:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 3833225463414016419}
         m_TargetAssemblyTypeName: Enemy, Assembly-CSharp
         m_MethodName: OnDied
         m_Mode: 1

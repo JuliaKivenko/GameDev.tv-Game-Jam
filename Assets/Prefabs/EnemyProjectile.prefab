@@ -157,7 +157,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damage: 25
-  speed: 10
+  speed: 20
   direction: {x: -1, y: 0, z: 0}
   rb: {fileID: 3228335749065091898}
   projectileCollider: {fileID: 647744026297400680}
