@@ -6,6 +6,7 @@ using UnityEngine.Events;
 public abstract class Health : MonoBehaviour
 {
     public UnityEvent OnDied;
+    public UnityEvent OnGetHit;
     public float baseHealth;
     public float currentHealth;
 
@@ -25,6 +26,9 @@ public abstract class Health : MonoBehaviour
         {
             Die();
         }
+
+        if (OnGetHit != null)
+            OnGetHit.Invoke();
 
     }
 

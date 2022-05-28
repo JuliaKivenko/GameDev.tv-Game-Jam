@@ -2944,8 +2944,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   levelDifficultyUpInterval: 35
-  levelSpeed: 0.035
-  maxLevelSpeed: 0.7
+  levelSpeed: 7
+  maxLevelSpeed: 35
   speedIncrease: 1.2
   enemyHealthIncrease: 1.05
   levelSegments:

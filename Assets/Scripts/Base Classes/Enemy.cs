@@ -7,11 +7,14 @@ public abstract class Enemy : Damager
     [SerializeField] int pointsToSpawn;
     [SerializeField] float pointsSpawnRadius = 3f;
     [SerializeField] EnemyHealth health;
+    [SerializeField] GameObject enemyHealthBar;
+
 
 
     private void OnEnable()
     {
         health.SetFullHealth();
+        enemyHealthBar.SetActive(false);
         GameManager.onGameOver += OnGameOver;
     }
 
@@ -29,14 +32,14 @@ public abstract class Enemy : Damager
         if (other.gameObject.GetComponent<FireballProjectile>())
         {
             health.ReceiveDamage(other.gameObject.GetComponent<FireballProjectile>().GetDamage());
+            if (health.currentHealth != 0)
+                enemyHealthBar.SetActive(true);
         }
     }
 
+
     public void OnDied()
     {
-        //disables the object
-        gameObject.SetActive(false);
-
         //resets stats
         health.SetFullHealth();
 
@@ -52,6 +55,9 @@ public abstract class Enemy : Damager
                 pointPickup.SetActive(true);
             }
         }
+
+        //disables the object
+        gameObject.SetActive(false);
 
     }
 

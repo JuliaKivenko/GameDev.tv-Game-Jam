@@ -21,7 +21,7 @@ public abstract class Pickup : MonoBehaviour
         scrollingObject.StopScrolling();
         while (transform.position != playerPos)
         {
-            transform.position = Vector3.MoveTowards(transform.position, playerPos, flySpeed);
+            transform.position = Vector3.MoveTowards(transform.position, playerPos, flySpeed * Time.deltaTime);
             yield return null;
         }
         ApplyEffectOnPlayer();

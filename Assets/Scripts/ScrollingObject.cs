@@ -28,7 +28,7 @@ public class ScrollingObject : MonoBehaviour
         Vector3 targetPosition = new Vector3(LevelManager.sharedInstance.despawnTransform.position.x, transform.position.y, transform.position.z);
         while (transform.position != targetPosition)
         {
-            transform.position = Vector3.MoveTowards(transform.position, targetPosition, LevelManager.sharedInstance.GetLevelSpeed());
+            transform.position = Vector3.MoveTowards(transform.position, targetPosition, LevelManager.sharedInstance.GetLevelSpeed() * Time.deltaTime);
             yield return null;
         }
         gameObject.SetActive(false);

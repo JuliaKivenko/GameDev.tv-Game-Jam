@@ -36,7 +36,7 @@ public class PlayerController : MonoBehaviour
 
     private void OnDisable()
     {
-        GameManager.onGameOver += DeactivatePlayer;
+        GameManager.onGameOver -= DeactivatePlayer;
     }
 
     void Start()
