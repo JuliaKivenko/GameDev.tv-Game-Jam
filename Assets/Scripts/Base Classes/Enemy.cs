@@ -76,6 +76,7 @@ public abstract class Enemy : Damager
 
     void OnGameOver()
     {
+        health.ResetHealth();
         gameObject.SetActive(false);
     }
 
