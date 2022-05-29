@@ -19,8 +19,13 @@ public class GameManager : MonoBehaviour
 
     public bool isGameRunning = true;
 
+    [SerializeField] AudioSource pointCollectSfx;
+
     public delegate void GameOverAction();
     public static event GameOverAction onGameOver;
+
+    public delegate void GameStartAction();
+    public static event GameStartAction onGameStart;
 
     private void Awake()
     {
@@ -47,6 +52,7 @@ public class GameManager : MonoBehaviour
     {
         _points += pointsToAdd;
         _pointsForThisRun += pointsToAdd;
+        pointCollectSfx.Play();
     }
 
     public void SubstractPoints(int pointsToSubstract)
@@ -62,8 +68,10 @@ public class GameManager : MonoBehaviour
         _pointsForThisRun = 0;
         timePassed = 0;
         isGameRunning = true;
-        //Initializes all the things needed to play the game, like player, object pools and stuff
-        //In the future would also be applying increased player stats?
+
+        if (onGameStart != null)
+            onGameStart.Invoke();
+
     }
 
     public void GameOver()

@@ -7,6 +7,7 @@ public abstract class Pickup : MonoBehaviour
 {
     [SerializeField] float flySpeed = 5f;
 
+
     ScrollingObject scrollingObject;
 
     private void Start()

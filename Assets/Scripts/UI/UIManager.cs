@@ -17,6 +17,7 @@ public class UIManager : MonoBehaviour
     [SerializeField] GameObject gameOverPanel;
     [SerializeField] TextMeshProUGUI gameOverDistanceCounter;
     [SerializeField] TextMeshProUGUI gameOverPointsCounter;
+    [SerializeField] Button continueButton;
 
     [Header("Start Screen")]
     [SerializeField] GameObject startPanel;
@@ -45,8 +46,10 @@ public class UIManager : MonoBehaviour
     }
     public void ActivateGameOverPanel()
     {
+        continueButton.interactable = false;
         hudPanel.SetActive(false);
         gameOverPanel.SetActive(true);
+        StartCoroutine(WaitBeforeContinue());
         gameOverDistanceCounter.text = GameManager.sharedInstance.distance.ToString() + "m";
         gameOverPointsCounter.text = GameManager.sharedInstance.pointsForThisRun.ToString();
     }
@@ -72,5 +75,11 @@ public class UIManager : MonoBehaviour
     public void OnBuyUpgrade()
     {
         pointsText.text = GameManager.sharedInstance.points.ToString();
+    }
+
+    IEnumerator WaitBeforeContinue()
+    {
+        yield return new WaitForSeconds(2f);
+        continueButton.interactable = true;
     }
 }

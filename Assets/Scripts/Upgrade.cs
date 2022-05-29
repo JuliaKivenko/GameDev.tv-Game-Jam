@@ -25,12 +25,6 @@ public class Upgrade : ScriptableObject
 
     public void BuyUpgrade()
     {
-        if (GameManager.sharedInstance.points < upgradePrice)
-        {
-            //Show Message that cannot buy an upgrade. Alternatively just grey out the button
-            return;
-        }
-
         //Subtract price from the overal points player has
         GameManager.sharedInstance.SubstractPoints(upgradePrice);
 

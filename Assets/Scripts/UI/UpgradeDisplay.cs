@@ -12,6 +12,7 @@ public class UpgradeDisplay : MonoBehaviour
     [SerializeField] Image upgradeImage;
     [SerializeField] TextMeshProUGUI upgradeLevel;
     [SerializeField] TextMeshProUGUI upgradePrice;
+    [SerializeField] AudioSource upgradeSFX;
 
 
 
@@ -25,7 +26,13 @@ public class UpgradeDisplay : MonoBehaviour
 
     public void BuyUpgradeAndUpdateVisual()
     {
+        if (GameManager.sharedInstance.points < upgrade.upgradePrice)
+        {
+            //Show Message that cannot buy an upgrade. Alternatively just grey out the button
+            return;
+        }
         upgrade.BuyUpgrade();
+        upgradeSFX.Play();
 
         upgradeLevel.text = "Lvl. " + upgrade.upgradeLevel.ToString();
         upgradePrice.text = upgrade.upgradePrice.ToString() + "$ Buy";

@@ -48,6 +48,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   flySpeed: 28
+  pickupCollectSFX: {fileID: 0}
   pointValue: 1
 --- !u!54 &6323996149306092973
 Rigidbody:

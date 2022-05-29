@@ -15,6 +15,7 @@ public class PlayerController : MonoBehaviour
     [Header("Projectile")]
     [SerializeField] Transform fireballSocket;
     [SerializeField] GameObject fireball;
+    [SerializeField] AudioSource fireballSFX;
 
     Vector3 flyDirection = Vector3.up;
     Rigidbody playerRigidbody;
@@ -97,6 +98,8 @@ public class PlayerController : MonoBehaviour
 
         //If fully charged, shoot the fireball and set to recharge
         currentRechargeTime = 0;
+
+        fireballSFX.Play();
 
         GameObject fireballProjectile = FireballObjectPool.sharedInstance.GetPooledObject();
         if (fireballProjectile != null)

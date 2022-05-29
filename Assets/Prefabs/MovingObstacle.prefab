@@ -47,6 +47,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damage: 999999
+  fireballImpactSfx: {fileID: 0}
+  projectileLayerMask:
+    serializedVersion: 2
+    m_Bits: 128
 --- !u!65 &7791244507017095150
 BoxCollider:
   m_ObjectHideFlags: 0
