@@ -15,6 +15,10 @@ public class GameManager : MonoBehaviour
     public float distance { get { return _distance; } set { } }
     float _distance = 0;
 
+    public float bestDistance = 0;
+
+    public float bestPoints = 0;
+
     float timePassed;
 
     public bool isGameRunning = true;
@@ -76,6 +80,16 @@ public class GameManager : MonoBehaviour
 
     public void GameOver()
     {
+
+        if (_distance > bestDistance)
+        {
+            bestDistance = _distance;
+        }
+        if (_pointsForThisRun > bestPoints)
+        {
+            bestPoints = _pointsForThisRun;
+        }
+
         UIManager.sharedInstance.ActivateGameOverPanel();
 
         foreach (GameObject enemyGameObject in EnemyObjectPool.sharedInstance.pooledObjects)

@@ -18,10 +18,13 @@ public class UIManager : MonoBehaviour
     [SerializeField] TextMeshProUGUI gameOverDistanceCounter;
     [SerializeField] TextMeshProUGUI gameOverPointsCounter;
     [SerializeField] Button continueButton;
+    [SerializeField] TextMeshProUGUI bestDistanceText;
+    [SerializeField] TextMeshProUGUI bestPointsText;
 
     [Header("Start Screen")]
     [SerializeField] GameObject startPanel;
     [SerializeField] TextMeshProUGUI pointsText;
+    [SerializeField] AudioClip pressStartSound;
 
     private void Awake()
     {
@@ -49,9 +52,16 @@ public class UIManager : MonoBehaviour
         continueButton.interactable = false;
         hudPanel.SetActive(false);
         gameOverPanel.SetActive(true);
+
+
         StartCoroutine(WaitBeforeContinue());
-        gameOverDistanceCounter.text = GameManager.sharedInstance.distance.ToString() + "m";
+
+        gameOverDistanceCounter.text = GameManager.sharedInstance.distance.ToString() + " m";
         gameOverPointsCounter.text = GameManager.sharedInstance.pointsForThisRun.ToString();
+
+        bestDistanceText.text = GameManager.sharedInstance.bestDistance.ToString() + " m";
+        bestPointsText.text = GameManager.sharedInstance.bestPoints.ToString();
+
     }
 
     public void ActivateStartPanel()
@@ -66,6 +76,7 @@ public class UIManager : MonoBehaviour
     {
         startPanel.SetActive(false);
         hudPanel.SetActive(true);
+        SoundManager.PlaySound(pressStartSound);
         Upgrade.onBuyUpgrade -= OnBuyUpgrade;
 
         //remove this in the future maybe and make game manager subscribe to onclick if possible?

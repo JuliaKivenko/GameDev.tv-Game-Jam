@@ -13,6 +13,7 @@ public class UpgradeDisplay : MonoBehaviour
     [SerializeField] TextMeshProUGUI upgradeLevel;
     [SerializeField] TextMeshProUGUI upgradePrice;
     [SerializeField] AudioSource upgradeSFX;
+    [SerializeField] AudioClip unavailableSFX;
 
 
 
@@ -29,6 +30,7 @@ public class UpgradeDisplay : MonoBehaviour
         if (GameManager.sharedInstance.points < upgrade.upgradePrice)
         {
             //Show Message that cannot buy an upgrade. Alternatively just grey out the button
+            SoundManager.PlaySound(unavailableSFX);
             return;
         }
         upgrade.BuyUpgrade();

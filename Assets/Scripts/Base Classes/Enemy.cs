@@ -10,7 +10,6 @@ public abstract class Enemy : Damager
     [SerializeField] EnemyHealth health;
     [SerializeField] GameObject enemyHealthbar;
     [SerializeField] Image healthbarFill;
-    [SerializeField] AudioSource getHitSFX;
 
     bool enableHealthBar = false;
 
@@ -44,7 +43,6 @@ public abstract class Enemy : Damager
         if (other.gameObject.GetComponent<FireballProjectile>())
         {
             health.ReceiveDamage(other.gameObject.GetComponent<FireballProjectile>().GetDamage());
-            getHitSFX.Play();
             enableHealthBar = true;
         }
     }
@@ -53,7 +51,6 @@ public abstract class Enemy : Damager
     public void OnDied()
     {
         //resets stats
-        getHitSFX.Play();
         health.SetFullHealth();
         enableHealthBar = false;
         healthbarFill.fillAmount = 1;

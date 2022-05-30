@@ -37,11 +37,12 @@ public class RandomBGM : MonoBehaviour
     {
         audioSource.clip = bgmList[Random.Range(0, bgmList.Count)];
         audioSource.Play();
-        Invoke("PlayRandomTrack", audioSource.clip.length);
+        StartCoroutine(PlayNewTrack(audioSource.clip.length));
     }
 
     void OnGameOver()
     {
+        StopAllCoroutines();
         PlayMenuMusic();
     }
 
@@ -51,6 +52,12 @@ public class RandomBGM : MonoBehaviour
         audioSource.clip = menuAudio;
         audioSource.Play();
         audioSource.loop = true;
+    }
+
+    IEnumerator PlayNewTrack(float previousTracklength)
+    {
+        yield return new WaitForSeconds(previousTracklength);
+        PlayRandomTrack();
     }
 
 }

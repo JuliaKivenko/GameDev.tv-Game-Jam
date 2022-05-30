@@ -6,6 +6,7 @@ public class ShootingEnemy : Enemy
 {
     [SerializeField] float shootingInterval;
     [SerializeField] Transform shootSocket;
+    [SerializeField] AudioClip shootingEffect;
     float timer = 0;
 
     void Update()
@@ -19,6 +20,7 @@ public class ShootingEnemy : Enemy
             {
                 enemyProjectile.transform.position = shootSocket.position;
                 enemyProjectile.transform.rotation = Quaternion.identity;
+                SoundManager.PlaySound(shootingEffect);
                 enemyProjectile.SetActive(true);
             }
             timer = 0;
