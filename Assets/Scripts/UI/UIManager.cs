@@ -26,6 +26,10 @@ public class UIManager : MonoBehaviour
     [SerializeField] TextMeshProUGUI pointsText;
     [SerializeField] AudioClip pressStartSound;
 
+    [Header("Tutorial")]
+    [SerializeField] GameObject tutorialCanvas;
+    [SerializeField] Button tutorialProceedButton;
+
     private void Awake()
     {
         sharedInstance = this;
@@ -54,7 +58,7 @@ public class UIManager : MonoBehaviour
         gameOverPanel.SetActive(true);
 
 
-        StartCoroutine(WaitBeforeContinue());
+        StartCoroutine(WaitBeforeContinue(continueButton));
 
         gameOverDistanceCounter.text = GameManager.sharedInstance.distance.ToString() + " m";
         gameOverPointsCounter.text = GameManager.sharedInstance.pointsForThisRun.ToString();
@@ -77,10 +81,21 @@ public class UIManager : MonoBehaviour
         startPanel.SetActive(false);
         hudPanel.SetActive(true);
         SoundManager.PlaySound(pressStartSound);
-        Upgrade.onBuyUpgrade -= OnBuyUpgrade;
 
-        //remove this in the future maybe and make game manager subscribe to onclick if possible?
+        if (GameManager.sharedInstance.isFirstRun)
+        {
+            tutorialCanvas.SetActive(true);
+            tutorialProceedButton.interactable = false;
+            GameManager.sharedInstance.isFirstRun = false;
+            StartCoroutine(WaitBeforeContinue(tutorialProceedButton));
+            return;
+        }
+        else
+        {
+            tutorialCanvas.SetActive(false);
+        }
         GameManager.sharedInstance.StartGame();
+        Upgrade.onBuyUpgrade -= OnBuyUpgrade;
     }
 
     public void OnBuyUpgrade()
@@ -88,9 +103,9 @@ public class UIManager : MonoBehaviour
         pointsText.text = GameManager.sharedInstance.points.ToString();
     }
 
-    IEnumerator WaitBeforeContinue()
+    IEnumerator WaitBeforeContinue(Button buttonToEnable)
     {
         yield return new WaitForSeconds(2f);
-        continueButton.interactable = true;
+        buttonToEnable.interactable = true;
     }
 }

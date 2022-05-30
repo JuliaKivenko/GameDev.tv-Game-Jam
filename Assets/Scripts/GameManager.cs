@@ -31,6 +31,8 @@ public class GameManager : MonoBehaviour
     public delegate void GameStartAction();
     public static event GameStartAction onGameStart;
 
+    public bool isFirstRun = true;
+
     private void Awake()
     {
         timePassed = 0;
