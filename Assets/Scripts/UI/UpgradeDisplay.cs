@@ -10,6 +10,7 @@ public class UpgradeDisplay : MonoBehaviour
 
     [SerializeField] TextMeshProUGUI upgradeName;
     [SerializeField] Image upgradeImage;
+    [SerializeField] Animator upgradeImageAnimator;
     [SerializeField] TextMeshProUGUI upgradeLevel;
     [SerializeField] TextMeshProUGUI upgradePrice;
     [SerializeField] AudioSource upgradeSFX;
@@ -34,6 +35,7 @@ public class UpgradeDisplay : MonoBehaviour
             return;
         }
         upgrade.BuyUpgrade();
+        upgradeImageAnimator.Play("A_UpgradeImageOnUpgrade");
         upgradeSFX.Play();
 
         upgradeLevel.text = "Lvl. " + upgrade.upgradeLevel.ToString();

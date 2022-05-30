@@ -8,6 +8,8 @@ public class RandomBGM : MonoBehaviour
     [SerializeField] AudioClip menuAudio;
     [SerializeField] AudioSource audioSource;
 
+    int previousTrackID;
+
     private void Awake()
     {
         GameManager.onGameStart += OnGameStart;
@@ -35,7 +37,12 @@ public class RandomBGM : MonoBehaviour
 
     void PlayRandomTrack()
     {
-        audioSource.clip = bgmList[Random.Range(0, bgmList.Count)];
+        int trackId = Random.Range(0, bgmList.Count);
+        while (trackId == previousTrackID)
+        {
+            trackId = Random.Range(0, bgmList.Count);
+        }
+        audioSource.clip = bgmList[trackId];
         audioSource.Play();
         StartCoroutine(PlayNewTrack(audioSource.clip.length));
     }
