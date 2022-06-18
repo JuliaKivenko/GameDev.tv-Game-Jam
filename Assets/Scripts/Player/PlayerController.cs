@@ -56,8 +56,9 @@ public class PlayerController : MonoBehaviour
 
     void Update()
     {
-        if (enableControls)
-            ManageInput();
+        //Disabled for mobile
+        //if (enableControls)
+        //ManageInput();
     }
 
     private void FixedUpdate()
@@ -88,13 +89,14 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    void Fire()
+    public void ManageMobileInput(int value) => move = value;
+
+    public void ResetVelocity() => playerRigidbody.velocity = Vector3.zero;
+
+    public void Fire()
     {
         //Check for recharge
-        if (currentRechargeTime != rechargeTime)
-        {
-            return;
-        }
+        if (currentRechargeTime != rechargeTime) { return; }
 
         //If fully charged, shoot the fireball and set to recharge
         currentRechargeTime = 0;

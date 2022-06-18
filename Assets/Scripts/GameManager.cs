@@ -82,7 +82,6 @@ public class GameManager : MonoBehaviour
 
     public void GameOver()
     {
-
         if (_distance > bestDistance)
         {
             bestDistance = _distance;
