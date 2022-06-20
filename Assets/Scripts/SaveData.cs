@@ -37,19 +37,19 @@ public class SaveData : MonoBehaviour
         string json = string.Empty;
 
         json = JsonUtility.ToJson(saveObject);
-        string path = Application.dataPath + "/save.json";
+        string path = Application.persistentDataPath + Path.AltDirectorySeparatorChar + "save.json";
         File.WriteAllText(path, json);
 
-        Debug.Log(json);
+        Debug.Log("Saved!");
 
     }
 
     public void Load()
     {
-        string path = Application.dataPath + "/save.json";
+        string path = Application.persistentDataPath + Path.AltDirectorySeparatorChar + "save.json";
         if (!File.Exists(path))
         {
-            Debug.LogError("No savefile found!");
+            Debug.Log("No savefile found!");
             return;
         }
         string json = File.ReadAllText(path);
