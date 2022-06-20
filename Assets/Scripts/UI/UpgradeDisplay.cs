@@ -26,7 +26,7 @@ public class UpgradeDisplay : MonoBehaviour
         upgradePrice.text = upgrade.upgradePrice.ToString() + "$ Buy";
     }
 
-    public void BuyUpgradeAndUpdateVisual()
+    public void BuyUpgrade()
     {
         if (GameManager.sharedInstance.points < upgrade.upgradePrice)
         {
@@ -38,8 +38,13 @@ public class UpgradeDisplay : MonoBehaviour
         upgradeImageAnimator.Play("A_UpgradeImageOnUpgrade");
         upgradeSFX.Play();
 
+        UpdateVisual();
+
+    }
+
+    public void UpdateVisual()
+    {
         upgradeLevel.text = "Lvl. " + upgrade.upgradeLevel.ToString();
         upgradePrice.text = upgrade.upgradePrice.ToString() + "$ Buy";
-
     }
 }

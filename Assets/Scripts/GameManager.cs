@@ -24,6 +24,7 @@ public class GameManager : MonoBehaviour
     public bool isGameRunning = true;
 
     [SerializeField] AudioSource pointCollectSfx;
+    [SerializeField] SaveData saveData;
 
     public delegate void GameOverAction();
     public static event GameOverAction onGameOver;
@@ -33,16 +34,18 @@ public class GameManager : MonoBehaviour
 
     public bool isFirstRun = true;
 
+
     private void Awake()
     {
         timePassed = 0;
         sharedInstance = this;
-
     }
 
     private void Start()
     {
+        saveData.Load();
         StopGame();
+        UIManager.sharedInstance.UpdateVisualsAfterLoad();
     }
 
     private void Update()
@@ -54,12 +57,15 @@ public class GameManager : MonoBehaviour
         }
 
     }
+
     public void AddPoints(int pointsToAdd)
     {
         _points += pointsToAdd;
         _pointsForThisRun += pointsToAdd;
         pointCollectSfx.Play();
     }
+
+    public void LoadPointsFromSave(int savedPoints) => _points = savedPoints;
 
     public void SubstractPoints(int pointsToSubstract)
     {
@@ -74,6 +80,8 @@ public class GameManager : MonoBehaviour
         _pointsForThisRun = 0;
         timePassed = 0;
         isGameRunning = true;
+
+        saveData.Save();
 
         if (onGameStart != null)
             onGameStart.Invoke();
@@ -99,6 +107,8 @@ public class GameManager : MonoBehaviour
         }
 
         isGameRunning = false;
+
+        saveData.Save();
 
         if (onGameOver != null)
             onGameOver.Invoke();

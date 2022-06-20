@@ -25,6 +25,7 @@ public class UIManager : MonoBehaviour
     [SerializeField] GameObject startPanel;
     [SerializeField] TextMeshProUGUI pointsText;
     [SerializeField] AudioClip pressStartSound;
+    [SerializeField] UpgradeDisplay[] upgradeDisplays;
 
     [Header("Tutorial")]
     [SerializeField] GameObject tutorialCanvas;
@@ -32,8 +33,17 @@ public class UIManager : MonoBehaviour
 
     private void Awake()
     {
-        sharedInstance = this;
+        if (sharedInstance != null)
+        {
+            Destroy(gameObject);
+        }
+        else
+        {
+            sharedInstance = this;
+        }
     }
+
+    private void OnEnable() => Upgrade.onBuyUpgrade += OnBuyUpgrade;
 
     private void Start()
     {
@@ -73,7 +83,6 @@ public class UIManager : MonoBehaviour
         gameOverPanel.SetActive(false);
         startPanel.SetActive(true);
         pointsText.text = GameManager.sharedInstance.points.ToString();
-        Upgrade.onBuyUpgrade += OnBuyUpgrade;
     }
 
     public void DeactivateStartPanel()
@@ -101,6 +110,15 @@ public class UIManager : MonoBehaviour
     public void OnBuyUpgrade()
     {
         pointsText.text = GameManager.sharedInstance.points.ToString();
+    }
+
+    public void UpdateVisualsAfterLoad()
+    {
+        pointsText.text = GameManager.sharedInstance.points.ToString();
+        foreach (UpgradeDisplay upgradeDisplay in upgradeDisplays)
+        {
+            upgradeDisplay.UpdateVisual();
+        }
     }
 
     IEnumerator WaitBeforeContinue(Button buttonToEnable)
