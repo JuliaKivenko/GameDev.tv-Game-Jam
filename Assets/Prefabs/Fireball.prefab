@@ -48,7 +48,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 083470959ff6b004b8680c5583396bc2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 10
+  _damage: 0
   speed: 15
   direction: {x: 1, y: 0, z: 0}
   rb: {fileID: 3202308382613763401}

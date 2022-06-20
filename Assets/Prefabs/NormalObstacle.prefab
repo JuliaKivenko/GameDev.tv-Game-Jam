@@ -45,11 +45,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1296887d4b2fd6b49b58a14e45dc0171, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 999999
-  fireballImpactSfx: {fileID: 3633321485671763568}
-  projectileLayerMask:
-    serializedVersion: 2
-    m_Bits: 128
+  _damage: 9999999
 --- !u!65 &448054366987448780
 BoxCollider:
   m_ObjectHideFlags: 0

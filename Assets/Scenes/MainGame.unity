@@ -1402,6 +1402,17 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 210155531}
   m_CullTransparentMesh: 1
+--- !u!114 &234581590 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7389884913248501372, guid: a053c16f1495c9d48b853b3d1031e35f, type: 3}
+  m_PrefabInstance: {fileID: 7785142339100414512}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2aa4baaa8bc1ff24591e2a739afcf60f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &266379338
 GameObject:
   m_ObjectHideFlags: 0
@@ -3079,6 +3090,10 @@ PrefabInstance:
     - target: {fileID: 1518453550044080235, guid: 7205493349465b94fb6a3a870a731efb, type: 3}
       propertyPath: m_Name
       value: Boundary (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 2909125646771439361, guid: 7205493349465b94fb6a3a870a731efb, type: 3}
+      propertyPath: _damage
+      value: 9999999
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7205493349465b94fb6a3a870a731efb, type: 3}
@@ -8399,6 +8414,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Boundary
       objectReference: {fileID: 0}
+    - target: {fileID: 2909125646771439361, guid: 7205493349465b94fb6a3a870a731efb, type: 3}
+      propertyPath: _damage
+      value: 9999999
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7205493349465b94fb6a3a870a731efb, type: 3}
 --- !u!1001 &7785142339100414512
@@ -8415,6 +8434,18 @@ PrefabInstance:
     - target: {fileID: 1065992468683170900, guid: a053c16f1495c9d48b853b3d1031e35f, type: 3}
       propertyPath: m_Layer
       value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 5884103471539906821, guid: a053c16f1495c9d48b853b3d1031e35f, type: 3}
+      propertyPath: playerStats
+      value: 
+      objectReference: {fileID: 234581590}
+    - target: {fileID: 7389884913248501372, guid: a053c16f1495c9d48b853b3d1031e35f, type: 3}
+      propertyPath: damage
+      value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 7389884913248501372, guid: a053c16f1495c9d48b853b3d1031e35f, type: 3}
+      propertyPath: health
+      value: 100
       objectReference: {fileID: 0}
     - target: {fileID: 7446010088555999145, guid: a053c16f1495c9d48b853b3d1031e35f, type: 3}
       propertyPath: m_Constraints

@@ -4,19 +4,18 @@ using UnityEngine;
 
 public class PlayerStats : MonoBehaviour
 {
+    public float health;
+    public float damage;
 
     public void ModifyPlayerStat(statTypes playerStat, float multiplier)
     {
         if (playerStat == statTypes.Health)
         {
-            PlayerController.sharedInstance.health.ModifyHealth(multiplier);
+            health *= multiplier;
         }
         if (playerStat == statTypes.Damage)
         {
-            foreach (GameObject fireBall in FireballObjectPool.sharedInstance.pooledObjects)
-            {
-                fireBall.GetComponent<FireballProjectile>().ModifyDamage(multiplier);
-            }
+            damage *= multiplier;
         }
 
     }

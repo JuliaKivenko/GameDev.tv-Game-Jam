@@ -40,6 +40,18 @@ public class PlayerController : MonoBehaviour
         GameManager.onGameOver -= DeactivatePlayer;
     }
 
+    private void Awake()
+    {
+        if (sharedInstance != null)
+        {
+            Destroy(gameObject);
+        }
+        else
+        {
+            sharedInstance = this;
+        }
+    }
+
     void Start()
     {
         playerRigidbody = GetComponentInChildren<Rigidbody>();
@@ -120,7 +132,7 @@ public class PlayerController : MonoBehaviour
         {
             return;
         }
-        health.ReceiveDamage(damager.GetDamage());
+        health.ReceiveDamage(damager.damage);
         StartCoroutine(InvulnerabilityFrames());
     }
 

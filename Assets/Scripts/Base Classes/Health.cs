@@ -7,7 +7,8 @@ public abstract class Health : MonoBehaviour
 {
     public UnityEvent OnDied;
     public UnityEvent OnGetHit;
-    public float baseHealth;
+    [SerializeField] protected float _baseHealth;
+    public virtual float baseHealth { get => _baseHealth; set => _baseHealth = value; }
     public float currentHealth;
 
 
@@ -34,7 +35,7 @@ public abstract class Health : MonoBehaviour
 
     public virtual void ModifyHealth(float multiplier)
     {
-        baseHealth *= multiplier;
+        _baseHealth *= multiplier;
         SetFullHealth();
     }
 

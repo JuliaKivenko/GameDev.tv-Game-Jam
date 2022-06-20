@@ -10,6 +10,8 @@ public abstract class Enemy : Damager
     [SerializeField] EnemyHealth health;
     [SerializeField] GameObject enemyHealthbar;
     [SerializeField] Image healthbarFill;
+    [SerializeField] protected float _damage;
+    public override float damage { get => _damage; set => _damage = value; }
 
     bool enableHealthBar = false;
 
@@ -42,7 +44,7 @@ public abstract class Enemy : Damager
     {
         if (other.gameObject.GetComponent<FireballProjectile>())
         {
-            health.ReceiveDamage(other.gameObject.GetComponent<FireballProjectile>().GetDamage());
+            health.ReceiveDamage(PlayerController.sharedInstance.playerStats.damage);
             enableHealthBar = true;
         }
     }

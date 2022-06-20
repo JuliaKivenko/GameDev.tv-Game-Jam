@@ -4,12 +4,5 @@ using UnityEngine;
 
 public abstract class Damager : MonoBehaviour
 {
-    [SerializeField] protected float damage;
-
-    public float GetDamage()
-    {
-        float damageValue = damage;
-        return damageValue;
-    }
-
+    public virtual float damage { get; set; }
 }
