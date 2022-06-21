@@ -74,14 +74,6 @@ public class SaveData : MonoBehaviour
 [System.Serializable]
 public class SaveObject
 {
-    /*public SaveObject(float savedPlayerHealth, float savedPlayerDamage, int savedPoints, float savedBestDistance, float savedBestPoints)
-    {
-        SavedPlayerHealth = savedPlayerHealth;
-        SavedPlayerDamage = savedPlayerDamage;
-        SavedPoints = savedPoints;
-        SavedBestDistance = savedBestDistance;
-        SavedBestPoints = savedBestPoints;
-    }*/
 
     public float SavedPlayerHealth;
     public float SavedPlayerDamage;

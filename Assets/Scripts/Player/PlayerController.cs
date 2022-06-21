@@ -75,7 +75,7 @@ public class PlayerController : MonoBehaviour
 
     private void FixedUpdate()
     {
-        playerRigidbody.AddForce(flyDirection * flyForceMultiplier * move);
+        playerRigidbody.AddForce(flyDirection * flyForceMultiplier * move * Time.deltaTime);
     }
 
     void ManageInput()

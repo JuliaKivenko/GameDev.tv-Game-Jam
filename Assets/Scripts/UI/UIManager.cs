@@ -44,6 +44,7 @@ public class UIManager : MonoBehaviour
     }
 
     private void OnEnable() => Upgrade.onBuyUpgrade += OnBuyUpgrade;
+    private void OnDisable() => Upgrade.onBuyUpgrade -= OnBuyUpgrade;
 
     private void Start()
     {
@@ -104,7 +105,6 @@ public class UIManager : MonoBehaviour
             tutorialCanvas.SetActive(false);
         }
         GameManager.sharedInstance.StartGame();
-        Upgrade.onBuyUpgrade -= OnBuyUpgrade;
     }
 
     public void OnBuyUpgrade()
