@@ -6,7 +6,7 @@ using TMPro;
 
 public class UIManager : MonoBehaviour
 {
-    public static UIManager sharedInstance;
+    public static UIManager instance;
 
     [Header("HUD")]
     [SerializeField] GameObject hudPanel;
@@ -18,6 +18,7 @@ public class UIManager : MonoBehaviour
     [SerializeField] TextMeshProUGUI gameOverDistanceCounter;
     [SerializeField] TextMeshProUGUI gameOverPointsCounter;
     [SerializeField] Button continueButton;
+    [SerializeField] float waitBeforeEnableContinue = 1.5f;
     [SerializeField] TextMeshProUGUI bestDistanceText;
     [SerializeField] TextMeshProUGUI bestPointsText;
 
@@ -31,15 +32,17 @@ public class UIManager : MonoBehaviour
     [SerializeField] GameObject tutorialCanvas;
     [SerializeField] Button tutorialProceedButton;
 
+    bool isRunStarted;
+
     private void Awake()
     {
-        if (sharedInstance != null)
+        if (instance != null)
         {
             Destroy(gameObject);
         }
         else
         {
-            sharedInstance = this;
+            instance = this;
         }
     }
 
@@ -52,51 +55,62 @@ public class UIManager : MonoBehaviour
         hudPanel.SetActive(false);
         startPanel.SetActive(true);
 
-        //in the future this will hold value of the points player has overall
         hudPointsCounter.text = "0";
         pointsText.text = "0";
+
+        isRunStarted = false;
     }
 
     private void Update()
     {
-        hudPointsCounter.text = GameManager.sharedInstance.points.ToString();
-        hudDistanceCounter.text = GameManager.sharedInstance.distance.ToString() + "m";
+        if (isRunStarted)
+        {
+            hudPointsCounter.text = GameManager.instance.points.ToString();
+            hudDistanceCounter.text = GameManager.instance.distance.ToString() + "m";
+        }
     }
+
     public void ActivateGameOverPanel()
     {
+        isRunStarted = false;
+
         continueButton.interactable = false;
         hudPanel.SetActive(false);
         gameOverPanel.SetActive(true);
 
-
         StartCoroutine(WaitBeforeContinue(continueButton));
 
-        gameOverDistanceCounter.text = GameManager.sharedInstance.distance.ToString() + " m";
-        gameOverPointsCounter.text = GameManager.sharedInstance.pointsForThisRun.ToString();
+        gameOverDistanceCounter.text = GameManager.instance.distance.ToString() + " m";
+        gameOverPointsCounter.text = GameManager.instance.pointsForThisRun.ToString();
 
-        bestDistanceText.text = GameManager.sharedInstance.bestDistance.ToString() + " m";
-        bestPointsText.text = GameManager.sharedInstance.bestPoints.ToString();
+        bestDistanceText.text = GameManager.instance.bestDistance.ToString() + " m";
+        bestPointsText.text = GameManager.instance.bestPoints.ToString();
+    }
 
+    IEnumerator WaitBeforeContinue(Button buttonToEnable)
+    {
+        yield return new WaitForSeconds(waitBeforeEnableContinue);
+        buttonToEnable.interactable = true;
     }
 
     public void ActivateStartPanel()
     {
         gameOverPanel.SetActive(false);
         startPanel.SetActive(true);
-        pointsText.text = GameManager.sharedInstance.points.ToString();
+        pointsText.text = GameManager.instance.points.ToString();
     }
 
-    public void DeactivateStartPanel()
+    public void BeginRun()
     {
         startPanel.SetActive(false);
         hudPanel.SetActive(true);
         SoundManager.PlaySound(pressStartSound);
 
-        if (GameManager.sharedInstance.isFirstRun)
+        if (GameManager.instance.isFirstRun)
         {
             tutorialCanvas.SetActive(true);
             tutorialProceedButton.interactable = false;
-            GameManager.sharedInstance.isFirstRun = false;
+            GameManager.instance.isFirstRun = false;
             StartCoroutine(WaitBeforeContinue(tutorialProceedButton));
             return;
         }
@@ -104,26 +118,23 @@ public class UIManager : MonoBehaviour
         {
             tutorialCanvas.SetActive(false);
         }
-        GameManager.sharedInstance.StartGame();
+
+        isRunStarted = true;
+        GameManager.instance.StartGame();
     }
 
     public void OnBuyUpgrade()
     {
-        pointsText.text = GameManager.sharedInstance.points.ToString();
+        pointsText.text = GameManager.instance.points.ToString();
     }
 
     public void UpdateVisualsAfterLoad()
     {
-        pointsText.text = GameManager.sharedInstance.points.ToString();
+        pointsText.text = GameManager.instance.points.ToString();
         foreach (UpgradeDisplay upgradeDisplay in upgradeDisplays)
         {
             upgradeDisplay.UpdateVisual();
         }
     }
 
-    IEnumerator WaitBeforeContinue(Button buttonToEnable)
-    {
-        yield return new WaitForSeconds(2f);
-        buttonToEnable.interactable = true;
-    }
 }

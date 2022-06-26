@@ -2,9 +2,16 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.EventSystems;
+using UnityEngine.InputSystem;
 
 public class PlayerController : MonoBehaviour
 {
+    public static PlayerController instance;
+    public Vector3 startPosition;
+    public PlayerStats playerStats;
+    public float fireballRechargeProgress;
+
     [Header("Base Stats")]
     [SerializeField] float rechargeTime;
     [SerializeField] float rechargeSpeed;
@@ -15,40 +22,26 @@ public class PlayerController : MonoBehaviour
     [Header("Projectile")]
     [SerializeField] Transform fireballSocket;
     [SerializeField] GameObject fireball;
-    [SerializeField] AudioSource fireballSFX;
+    [SerializeField] AudioClip fireballSFX;
 
-    Vector3 flyDirection = Vector3.up;
     Rigidbody playerRigidbody;
     float currentRechargeTime;
-    float move = 0;
     bool invulnerabilityActive = false;
-    bool enableControls = true;
-    public Vector3 startPosition;
+    float move = 0;
 
-    public PlayerStats playerStats;
+    private void OnEnable() => GameManager.onGameOver += DisablePlayerCharacter;
 
-    public static PlayerController sharedInstance;
-
-
-    private void OnEnable()
-    {
-        GameManager.onGameOver += DeactivatePlayer;
-    }
-
-    private void OnDisable()
-    {
-        GameManager.onGameOver -= DeactivatePlayer;
-    }
+    private void OnDisable() => GameManager.onGameOver -= DisablePlayerCharacter;
 
     private void Awake()
     {
-        if (sharedInstance != null)
+        if (instance != null)
         {
             Destroy(gameObject);
         }
         else
         {
-            sharedInstance = this;
+            instance = this;
         }
     }
 
@@ -59,12 +52,8 @@ public class PlayerController : MonoBehaviour
         health.SetFullHealth();
         startPosition = transform.position;
 
-        DeactivatePlayer();
-
-        sharedInstance = this;
-
+        DisablePlayerCharacter();
     }
-
 
     void Update()
     {
@@ -75,10 +64,11 @@ public class PlayerController : MonoBehaviour
 
     private void FixedUpdate()
     {
-        playerRigidbody.AddForce(flyDirection * flyForceMultiplier * move * Time.deltaTime);
+        playerRigidbody.AddForce(Vector3.up * flyForceMultiplier * move * Time.deltaTime);
     }
 
-    void ManageInput()
+    //Disabled for mobile
+    /*void ManagePCInput()
     {
         if (Input.GetKeyDown(KeyCode.Mouse0))
         {
@@ -99,7 +89,7 @@ public class PlayerController : MonoBehaviour
             //Fire projectile
             Fire();
         }
-    }
+    }*/
 
     public void ManageMobileInput(int value) => move = value;
 
@@ -113,7 +103,7 @@ public class PlayerController : MonoBehaviour
         //If fully charged, shoot the fireball and set to recharge
         currentRechargeTime = 0;
 
-        fireballSFX.Play();
+        SoundManager.PlaySound(fireballSFX);
 
         GameObject fireballProjectile = FireballObjectPool.sharedInstance.GetPooledObject();
         if (fireballProjectile != null)
@@ -126,6 +116,18 @@ public class PlayerController : MonoBehaviour
         StartCoroutine(RechargeFireball());
     }
 
+    IEnumerator RechargeFireball()
+    {
+        while (currentRechargeTime < rechargeTime)
+        {
+            currentRechargeTime += rechargeSpeed * Time.deltaTime;
+            fireballRechargeProgress = currentRechargeTime / rechargeTime;
+            yield return new WaitForEndOfFrame();
+        }
+        currentRechargeTime = rechargeTime;
+        fireballRechargeProgress = 1;
+    }
+
     public void GetHit(Damager damager)
     {
         if (invulnerabilityActive)
@@ -136,10 +138,11 @@ public class PlayerController : MonoBehaviour
         StartCoroutine(InvulnerabilityFrames());
     }
 
-
-    public void OnDie()
+    IEnumerator InvulnerabilityFrames()
     {
-        GameManager.sharedInstance.GameOver();
+        invulnerabilityActive = true;
+        yield return new WaitForSeconds(invulnerabilityLength);
+        invulnerabilityActive = false;
     }
 
     public Vector3 GetVelocity()
@@ -147,9 +150,8 @@ public class PlayerController : MonoBehaviour
         return playerRigidbody.velocity;
     }
 
-    void DeactivatePlayer()
+    void DisablePlayerCharacter()
     {
-        enableControls = false;
         playerRigidbody.velocity = Vector3.zero;
         playerRigidbody.transform.position = startPosition;
         playerRigidbody.isKinematic = true;
@@ -160,36 +162,9 @@ public class PlayerController : MonoBehaviour
 
     public void ActivatePlayerCharacter()
     {
-        enableControls = true;
         playerRigidbody.isKinematic = false;
         currentRechargeTime = rechargeTime;
         health.SetFullHealth();
         gameObject.SetActive(true);
     }
-
-    public float GetFireballRechargeProgress()
-    {
-        return currentRechargeTime / rechargeTime;
-    }
-
-
-    //Recharge Fireball
-    IEnumerator RechargeFireball()
-    {
-        while (currentRechargeTime < rechargeTime)
-        {
-            currentRechargeTime += rechargeSpeed * Time.deltaTime;
-            yield return new WaitForEndOfFrame();
-        }
-        currentRechargeTime = rechargeTime;
-    }
-
-    public IEnumerator InvulnerabilityFrames()
-    {
-        invulnerabilityActive = true;
-        yield return new WaitForSeconds(invulnerabilityLength);
-        invulnerabilityActive = false;
-    }
-
-
 }

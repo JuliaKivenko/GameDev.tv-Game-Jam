@@ -4,10 +4,9 @@ using UnityEngine;
 
 public class LevelManager : MonoBehaviour
 {
+    public static LevelManager instance;
 
-    public static LevelManager sharedInstance;
-
-    [Header("Difficulty Increase")]
+    [Header("Difficulty Increase Control")]
     [SerializeField] float levelDifficultyUpInterval;
     [SerializeField] float levelSpeed = 5f;
     [SerializeField] float maxLevelSpeed = 0.07f;
@@ -19,20 +18,30 @@ public class LevelManager : MonoBehaviour
     [SerializeField] Transform spawnTransform;
     public Transform despawnTransform;
 
+    private const float DISTANCE_TO_SPAWN_FROM_PLAYER = 30f;
 
     List<LevelSegment> segmentInstances = new List<LevelSegment>();
     Transform lastSegmentEnd;
     int lastId = 99;
     float timer;
     float startLevelSpeed;
-
-    private const float DISTANCE_TO_SPAWN_FROM_PLAYER = 30f;
+    bool isRunStarted;
 
     private void Awake()
     {
-        sharedInstance = this;
+        if (instance != null)
+        {
+            Destroy(gameObject);
+        }
+        else
+        {
+            instance = this;
+        }
     }
 
+    private void OnEnable() => GameManager.onGameOver += StopLevelGeneration;
+
+    private void OnDisable() => GameManager.onGameOver -= StopLevelGeneration;
 
     void Start()
     {
@@ -44,18 +53,19 @@ public class LevelManager : MonoBehaviour
         }
 
         startLevelSpeed = levelSpeed;
+        isRunStarted = false;
 
     }
 
     private void Update()
     {
-        if (!GameManager.sharedInstance.isGameRunning)
+        if (!isRunStarted)
         {
             return;
         }
 
         //if player's distance from segment end is less than defined in the variable, spawn next segment
-        if (Vector3.Distance(PlayerController.sharedInstance.transform.position, lastSegmentEnd.position) < DISTANCE_TO_SPAWN_FROM_PLAYER)
+        if (Vector3.Distance(PlayerController.instance.transform.position, lastSegmentEnd.position) < DISTANCE_TO_SPAWN_FROM_PLAYER)
         {
             SpawnNextSegment();
         }
@@ -105,6 +115,7 @@ public class LevelManager : MonoBehaviour
         gameObject.SetActive(true);
         timer = 0;
         lastSegmentEnd = spawnTransform;
+        isRunStarted = true;
         SpawnNextSegment();
     }
 
@@ -117,21 +128,13 @@ public class LevelManager : MonoBehaviour
                 levelSegment.gameObject.SetActive(false);
         }
 
+        isRunStarted = false;
+
         //Reset speed of the level to the starting speed
         levelSpeed = startLevelSpeed;
 
         //Deactivate level generator
         gameObject.SetActive(false);
-    }
-
-    private void OnEnable()
-    {
-        GameManager.onGameOver += StopLevelGeneration;
-    }
-
-    private void OnDisable()
-    {
-        GameManager.onGameOver -= StopLevelGeneration;
     }
 
 }

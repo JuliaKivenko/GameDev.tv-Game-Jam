@@ -11,7 +11,7 @@ public class PlayerCollider : MonoBehaviour
         if (other.gameObject.GetComponent<Damager>())
         {
             getHitSfx.Play();
-            PlayerController.sharedInstance.GetHit(other.gameObject.GetComponent<Damager>());
+            PlayerController.instance.GetHit(other.gameObject.GetComponent<Damager>());
         }
     }
 }

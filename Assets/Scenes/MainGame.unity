@@ -250,6 +250,18 @@ MonoBehaviour:
             m_StringArgument: 
             m_BoolArgument: 0
           m_CallState: 2
+        - m_Target: {fileID: 7785142339100414513}
+          m_TargetAssemblyTypeName: PlayerController, Assembly-CSharp
+          m_MethodName: ManageMobileInput
+          m_Mode: 3
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
 --- !u!114 &13713649
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -342,7 +354,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 8.547567
+  orthographic size: 8
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -558,7 +570,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &126993412
 RectTransform:
   m_ObjectHideFlags: 0
@@ -2036,7 +2048,6 @@ GameObject:
   - component: {fileID: 489323892}
   - component: {fileID: 489323895}
   - component: {fileID: 489323893}
-  - component: {fileID: 489323894}
   m_Layer: 5
   m_Name: Upgrade Button
   m_TagString: Untagged
@@ -2120,102 +2131,6 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
---- !u!82 &489323894
-AudioSource:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 489323891}
-  m_Enabled: 1
-  serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 0b94f0e84c8ebf349af0bf3467ee26a2, type: 3}
-  m_PlayOnAwake: 0
-  m_Volume: 1
-  m_Pitch: 1
-  Loop: 0
-  Mute: 0
-  Spatialize: 0
-  SpatializePostEffects: 0
-  Priority: 128
-  DopplerLevel: 1
-  MinDistance: 1
-  MaxDistance: 500
-  Pan2D: 0
-  rolloffMode: 0
-  BypassEffects: 0
-  BypassListenerEffects: 0
-  BypassReverbZones: 0
-  rolloffCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 1
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    - serializedVersion: 3
-      time: 1
-      value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  panLevelCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  spreadCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  reverbZoneMixCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 1
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
 --- !u!222 &489323895
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -2536,7 +2451,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1813885021}
         m_TargetAssemblyTypeName: UIManager, Assembly-CSharp
-        m_MethodName: DeactivateStartPanel
+        m_MethodName: BeginRun
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -4733,7 +4648,7 @@ MonoBehaviour:
   upgradeImageAnimator: {fileID: 1621747697}
   upgradeLevel: {fileID: 2069313364}
   upgradePrice: {fileID: 762534402}
-  upgradeSFX: {fileID: 1313142042}
+  upgradeSFX: {fileID: 8300000, guid: 0b94f0e84c8ebf349af0bf3467ee26a2, type: 3}
   unavailableSFX: {fileID: 8300000, guid: cc322d7900020d74ba00ef4cad8352b4, type: 3}
 --- !u!114 &1224480616
 MonoBehaviour:
@@ -5258,7 +5173,6 @@ GameObject:
   - component: {fileID: 1313142040}
   - component: {fileID: 1313142043}
   - component: {fileID: 1313142041}
-  - component: {fileID: 1313142042}
   m_Layer: 5
   m_Name: Upgrade Button
   m_TagString: Untagged
@@ -5342,102 +5256,6 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
---- !u!82 &1313142042
-AudioSource:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1313142039}
-  m_Enabled: 1
-  serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 0b94f0e84c8ebf349af0bf3467ee26a2, type: 3}
-  m_PlayOnAwake: 0
-  m_Volume: 1
-  m_Pitch: 1
-  Loop: 0
-  Mute: 0
-  Spatialize: 0
-  SpatializePostEffects: 0
-  Priority: 128
-  DopplerLevel: 1
-  MinDistance: 1
-  MaxDistance: 500
-  Pan2D: 0
-  rolloffMode: 0
-  BypassEffects: 0
-  BypassListenerEffects: 0
-  BypassReverbZones: 0
-  rolloffCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 1
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    - serializedVersion: 3
-      time: 1
-      value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  panLevelCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  spreadCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  reverbZoneMixCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 1
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
 --- !u!222 &1313142043
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -6830,7 +6648,7 @@ MonoBehaviour:
   upgradeImageAnimator: {fileID: 1310177287}
   upgradeLevel: {fileID: 210155533}
   upgradePrice: {fileID: 1802822057}
-  upgradeSFX: {fileID: 489323894}
+  upgradeSFX: {fileID: 8300000, guid: 0b94f0e84c8ebf349af0bf3467ee26a2, type: 3}
   unavailableSFX: {fileID: 8300000, guid: cc322d7900020d74ba00ef4cad8352b4, type: 3}
 --- !u!114 &1810540811
 MonoBehaviour:
@@ -6925,6 +6743,7 @@ MonoBehaviour:
   gameOverDistanceCounter: {fileID: 361955333}
   gameOverPointsCounter: {fileID: 1174862906}
   continueButton: {fileID: 878919636}
+  waitBeforeEnableContinue: 1.5
   bestDistanceText: {fileID: 352266501}
   bestPointsText: {fileID: 480752792}
   startPanel: {fileID: 758325267}
@@ -7231,7 +7050,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 0544534622617004ab73a197c6db96b2, type: 3}
+  m_audioClip: {fileID: 8300000, guid: 6f143e97bbf913a44a32ebd458bd94f9, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1
@@ -7682,7 +7501,6 @@ GameObject:
   - component: {fileID: 2108284928}
   - component: {fileID: 2108284927}
   - component: {fileID: 2108284930}
-  - component: {fileID: 2108284929}
   m_Layer: 0
   m_Name: Game Manager
   m_TagString: Untagged
@@ -7702,12 +7520,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f89de965033796b44879030472a022e8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bestDistance: 0
-  bestPoints: 0
-  isGameRunning: 1
-  pointCollectSfx: {fileID: 2108284929}
+  pointCollectSfx: {fileID: 8300000, guid: aefee06559ab93f4bb05e78f08f5863c, type: 3}
   saveData: {fileID: 2108284930}
-  isFirstRun: 1
 --- !u!4 &2108284928
 Transform:
   m_ObjectHideFlags: 0
@@ -7722,102 +7536,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!82 &2108284929
-AudioSource:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2108284926}
-  m_Enabled: 1
-  serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: aefee06559ab93f4bb05e78f08f5863c, type: 3}
-  m_PlayOnAwake: 0
-  m_Volume: 0.5
-  m_Pitch: 1
-  Loop: 0
-  Mute: 0
-  Spatialize: 0
-  SpatializePostEffects: 0
-  Priority: 128
-  DopplerLevel: 1
-  MinDistance: 1
-  MaxDistance: 500
-  Pan2D: 0
-  rolloffMode: 0
-  BypassEffects: 0
-  BypassListenerEffects: 0
-  BypassReverbZones: 0
-  rolloffCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 1
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    - serializedVersion: 3
-      time: 1
-      value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  panLevelCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  spreadCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  reverbZoneMixCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 1
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
 --- !u!114 &2108284930
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7986,6 +7704,10 @@ PrefabInstance:
       propertyPath: playerStats
       value: 
       objectReference: {fileID: 234581590}
+    - target: {fileID: 5884103471539906821, guid: a053c16f1495c9d48b853b3d1031e35f, type: 3}
+      propertyPath: OnDied.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 2108284927}
     - target: {fileID: 7389884913248501372, guid: a053c16f1495c9d48b853b3d1031e35f, type: 3}
       propertyPath: damage
       value: 50

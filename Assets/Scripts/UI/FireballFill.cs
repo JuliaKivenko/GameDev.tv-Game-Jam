@@ -14,6 +14,6 @@ public class FireballFill : MonoBehaviour
 
     void Update()
     {
-        fireBallBar.fillAmount = PlayerController.sharedInstance.GetFireballRechargeProgress();
+        fireBallBar.fillAmount = PlayerController.instance.fireballRechargeProgress;
     }
 }

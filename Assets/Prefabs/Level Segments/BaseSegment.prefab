@@ -1843,6 +1843,10 @@ PrefabInstance:
       propertyPath: m_Center.y
       value: 3.2888525
       objectReference: {fileID: 0}
+    - target: {fileID: 3917570400830808486, guid: e15d3ffcecfb61440b4043294967f085, type: 3}
+      propertyPath: _damage
+      value: 100
+      objectReference: {fileID: 0}
     - target: {fileID: 8283987753976672048, guid: e15d3ffcecfb61440b4043294967f085, type: 3}
       propertyPath: m_RootOrder
       value: 31

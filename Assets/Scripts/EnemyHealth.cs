@@ -20,10 +20,7 @@ public class EnemyHealth : Health
 
     public override void ModifyHealth(float healthGrowth)
     {
-        if (hasFullhealth())
-        {
-            baseHealth *= healthGrowth;
-            SetFullHealth();
-        }
+        baseHealth *= healthGrowth;
+        SetFullHealth();
     }
 }

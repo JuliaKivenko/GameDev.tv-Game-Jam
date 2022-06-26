@@ -9,6 +9,6 @@ public class PointPickUp : Pickup
 
     public override void ApplyEffectOnPlayer()
     {
-        GameManager.sharedInstance.AddPoints(pointValue);
+        GameManager.instance.AddPoints(pointValue);
     }
 }

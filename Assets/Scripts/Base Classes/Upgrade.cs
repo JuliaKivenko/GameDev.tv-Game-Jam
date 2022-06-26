@@ -26,14 +26,14 @@ public class Upgrade : ScriptableObject
     public void BuyUpgrade()
     {
         //Subtract price from the overal points player has
-        GameManager.sharedInstance.SubstractPoints(upgradePrice);
+        GameManager.instance.SubstractPoints(upgradePrice);
 
         //Invoke OnBuyUpgrade event
         if (onBuyUpgrade != null)
             onBuyUpgrade.Invoke();
 
         //Multiply the corresponding stat by the upgrade multiplier. Upgrade type which correlates with specific stats? Players stats script which has all the components hooked up to specific stat type? 
-        PlayerController.sharedInstance.playerStats.ModifyPlayerStat(upgradeType, upgradeStatIncrease);
+        PlayerController.instance.playerStats.ModifyPlayerStat(upgradeType, upgradeStatIncrease);
 
         //Increase Upgrade Level
         upgradeLevel += 1;

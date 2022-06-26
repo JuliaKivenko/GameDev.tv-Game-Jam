@@ -401,6 +401,10 @@ PrefabInstance:
       propertyPath: pathContainer
       value: 
       objectReference: {fileID: 372686790308552744}
+    - target: {fileID: 6650058591647840132, guid: 80aafa037c34ab84d95b9e37e17ce99d, type: 3}
+      propertyPath: _damage
+      value: 100
+      objectReference: {fileID: 0}
     - target: {fileID: 6784020668040182671, guid: 80aafa037c34ab84d95b9e37e17ce99d, type: 3}
       propertyPath: m_LocalScale.x
       value: 1
@@ -1305,6 +1309,10 @@ PrefabInstance:
       propertyPath: pathContainer
       value: 
       objectReference: {fileID: 4257110078779317259}
+    - target: {fileID: 6650058591647840132, guid: 80aafa037c34ab84d95b9e37e17ce99d, type: 3}
+      propertyPath: _damage
+      value: 100
+      objectReference: {fileID: 0}
     - target: {fileID: 6784020668040182671, guid: 80aafa037c34ab84d95b9e37e17ce99d, type: 3}
       propertyPath: m_LocalScale.x
       value: 1

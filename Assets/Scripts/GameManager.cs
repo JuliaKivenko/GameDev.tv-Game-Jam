@@ -5,7 +5,10 @@ using UnityEngine.Events;
 
 public class GameManager : MonoBehaviour
 {
-    public static GameManager sharedInstance;
+    public static GameManager instance;
+
+    [SerializeField] AudioClip pointCollectSfx;
+    [SerializeField] SaveData saveData;
 
     public int points { get { return _points; } set { } }
     int _points = 0;
@@ -15,16 +18,14 @@ public class GameManager : MonoBehaviour
     public float distance { get { return _distance; } set { } }
     float _distance = 0;
 
-    public float bestDistance = 0;
+    public float bestDistance { get { return _distance; } set { } }
+    float _bestDistance = 0;
 
-    public float bestPoints = 0;
+    public float bestPoints { get { return _distance; } set { } }
+    float _bestPoints = 0;
 
-    float timePassed;
-
-    public bool isGameRunning = true;
-
-    [SerializeField] AudioSource pointCollectSfx;
-    [SerializeField] SaveData saveData;
+    public bool isFirstRun { get { return _isFirstRun; } set { } }
+    bool _isFirstRun = true;
 
     public delegate void GameOverAction();
     public static event GameOverAction onGameOver;
@@ -32,29 +33,58 @@ public class GameManager : MonoBehaviour
     public delegate void GameStartAction();
     public static event GameStartAction onGameStart;
 
-    public bool isFirstRun = true;
+    bool isRunStarted;
+    float gameTimePassed;
 
 
     private void Awake()
     {
-        timePassed = 0;
-        sharedInstance = this;
+        if (instance != null)
+        {
+            Destroy(gameObject);
+        }
+        else
+        {
+            instance = this;
+        }
     }
 
     private void Start()
     {
+        gameTimePassed = 0;
         saveData.Load();
         StopGame();
-        UIManager.sharedInstance.UpdateVisualsAfterLoad();
+        UIManager.instance.UpdateVisualsAfterLoad();
     }
 
     private void Update()
     {
-        if (isGameRunning)
+        if (isRunStarted)
         {
-            timePassed += Time.deltaTime;
-            _distance = Mathf.Round(timePassed * LevelManager.sharedInstance.GetLevelSpeed());
+            gameTimePassed += Time.deltaTime;
+            _distance = Mathf.Round(gameTimePassed * LevelManager.instance.GetLevelSpeed());
         }
+    }
+
+    public void StopGame()
+    {
+        isRunStarted = false;
+        LevelManager.instance.StopLevelGeneration();
+    }
+
+    public void StartGame()
+    {
+        PlayerController.instance.ActivatePlayerCharacter();
+        LevelManager.instance.StartLevelGeneration();
+        _distance = 0;
+        _pointsForThisRun = 0;
+        gameTimePassed = 0;
+        isRunStarted = true;
+
+        saveData.Save();
+
+        if (onGameStart != null)
+            onGameStart.Invoke();
 
     }
 
@@ -62,30 +92,20 @@ public class GameManager : MonoBehaviour
     {
         _points += pointsToAdd;
         _pointsForThisRun += pointsToAdd;
-        pointCollectSfx.Play();
+        SoundManager.PlaySound(pointCollectSfx);
     }
-
-    public void LoadPointsFromSave(int savedPoints) => _points = savedPoints;
 
     public void SubstractPoints(int pointsToSubstract)
     {
         _points -= pointsToSubstract;
     }
 
-    public void StartGame()
+    public void LoadDataFromSave(int savedPoints, float savedbestDistance, float savedbestPoints, bool isFirstRun)
     {
-        PlayerController.sharedInstance.ActivatePlayerCharacter();
-        LevelManager.sharedInstance.StartLevelGeneration();
-        _distance = 0;
-        _pointsForThisRun = 0;
-        timePassed = 0;
-        isGameRunning = true;
-
-        saveData.Save();
-
-        if (onGameStart != null)
-            onGameStart.Invoke();
-
+        _points = savedPoints;
+        _bestDistance = savedbestDistance;
+        _bestPoints = savedbestPoints;
+        _isFirstRun = isFirstRun;
     }
 
     public void GameOver()
@@ -99,14 +119,14 @@ public class GameManager : MonoBehaviour
             bestPoints = _pointsForThisRun;
         }
 
-        UIManager.sharedInstance.ActivateGameOverPanel();
+        UIManager.instance.ActivateGameOverPanel();
 
         foreach (GameObject enemyGameObject in EnemyObjectPool.sharedInstance.pooledObjects)
         {
             enemyGameObject.GetComponent<EnemyHealth>().ResetHealth();
         }
 
-        isGameRunning = false;
+        isRunStarted = false;
 
         saveData.Save();
 
@@ -114,11 +134,7 @@ public class GameManager : MonoBehaviour
             onGameOver.Invoke();
     }
 
-    public void StopGame()
-    {
-        isGameRunning = false;
-        LevelManager.sharedInstance.StopLevelGeneration();
-    }
+
 
 
 

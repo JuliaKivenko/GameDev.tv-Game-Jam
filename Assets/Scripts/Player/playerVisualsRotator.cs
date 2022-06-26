@@ -8,7 +8,7 @@ public class playerVisualsRotator : MonoBehaviour
 
     void Update()
     {
-        transform.localEulerAngles = new Vector3(0, 0, PlayerController.sharedInstance.GetVelocity().y * rotateStrength);
+        transform.localEulerAngles = new Vector3(0, 0, PlayerController.instance.GetVelocity().y * rotateStrength);
     }
 
 }

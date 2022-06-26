@@ -44,7 +44,7 @@ public abstract class Enemy : Damager
     {
         if (other.gameObject.GetComponent<FireballProjectile>())
         {
-            health.ReceiveDamage(PlayerController.sharedInstance.playerStats.damage);
+            health.ReceiveDamage(PlayerController.instance.playerStats.damage);
             enableHealthBar = true;
         }
     }
